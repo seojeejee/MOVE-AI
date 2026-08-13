@@ -1,0 +1,5 @@
+report_id,timestamp,zone_id,raw_text,event_type,severity,source
+RPT-001,2026-07-08T10:50:00+09:00,CONGESTION_001,"서원대로 쪽 거의 안 움직입니다.",congestion,3,stt
+RPT-002,2026-07-08T11:05:00+09:00,CONGESTION_001,"서원대로 진입 전부터 차들이 멈춰 있습니다.",congestion,3,stt
+RPT-003,2026-07-08T11:20:00+09:00,CONGESTION_001,"서원대로 정체 심합니다. 우회가 나아 보여요.",congestion,2,stt
+RPT-004,2026-07-08T10:40:00+09:00,CONGESTION_005,"동탄치동천로1길 정체 있습니다.",congestion,2,stt

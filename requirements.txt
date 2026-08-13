@@ -1,0 +1,2 @@
+# The standalone demo executes JavaScript in an iframe.
+streamlit==1.55.0

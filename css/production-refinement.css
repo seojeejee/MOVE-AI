@@ -1,0 +1,1078 @@
+/* One operational visual language: neutral surfaces, a blue brand cue, and semantic colour only when it matters. */
+:root {
+  --refine-ink: #153746;
+  --refine-text: #365665;
+  --refine-muted: #718792;
+  --refine-line: #d9e4e8;
+  --refine-surface: #ffffff;
+  --refine-canvas: #f3f7f8;
+  --refine-blue: #1c7398;
+  --refine-blue-soft: #eaf4f8;
+  --refine-green: #237d67;
+  --refine-green-soft: #eaf6f1;
+  --refine-amber: #a96924;
+  --refine-amber-soft: #fcf3e7;
+  --refine-red: #b94b4b;
+  --refine-shadow: 0 5px 16px rgba(20, 55, 70, 0.07);
+}
+
+body { background: #eaf0f2 !important; color: var(--refine-ink) !important; }
+
+.phone-shell {
+  border-color: #cbd9de !important;
+  box-shadow: 0 20px 50px rgba(20, 55, 70, 0.14) !important;
+}
+
+.screen, .screen-body, .home-body, .report-body, .library-body, .manager-body {
+  background: var(--refine-canvas) !important;
+}
+
+.app-header, #screen-report:has(.report-body) .app-header {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid var(--refine-line) !important;
+  box-shadow: none !important;
+}
+
+.app-header h1, .app-header h2, .app-header strong, .greeting h2,
+.shipment-card h3, .service-principle h3, .library-intro h3,
+.knowledge-card-mobile h3, .report-body h3, .manager-card h3 {
+  color: var(--refine-ink) !important;
+}
+
+.app-header p, .app-header small, .greeting p, .shipment-card p,
+.service-principle p, .library-intro p, .knowledge-card-mobile p,
+.report-body p, .manager-card p { color: var(--refine-text) !important; }
+
+.live-chip, .status-pill, .shipment-top span, .senior-call-home .eyebrow {
+  background: var(--refine-green-soft) !important;
+  color: var(--refine-green) !important;
+  border-color: #cfe9df !important;
+  box-shadow: none !important;
+}
+
+/* Containers are differentiated by spacing and typography, rather than a different colour for every card. */
+.shipment-card, .service-principle, .senior-call-home, .library-intro,
+.knowledge-research-card, .knowledge-card-mobile, .manager-card, .report-intro,
+.report-facts, .tacit-field, .auto-info, .report-draft, .asset-result {
+  background: var(--refine-surface) !important;
+  border: 1px solid var(--refine-line) !important;
+  box-shadow: var(--refine-shadow) !important;
+}
+
+.shipment-card, .service-principle, .senior-call-home, .library-intro,
+.knowledge-research-card, .knowledge-card-mobile, .manager-card { border-radius: 12px !important; }
+
+.shipment-card { border-top-width: 1px !important; }
+
+.shipment-top, .service-principle .principle-head, .knowledge-research-top {
+  background: #f5f8f9 !important;
+  border-bottom: 1px solid var(--refine-line) !important;
+}
+
+.service-principle { border-left: 3px solid #8ca7b2 !important; }
+.senior-call-home { border-left: 3px solid var(--refine-green) !important; border-top-width: 1px !important; }
+
+/* The pre-drive briefing is the product promise, so it reads before the supporting knowledge label. */
+#senior-call-prompt .senior-call-home-head {
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+#senior-call-prompt .senior-ai-brand {
+  min-width: 0 !important;
+  gap: 9px !important;
+}
+
+#senior-call-prompt .senior-ai-brand i {
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  background: var(--refine-green-soft) !important;
+  color: var(--refine-green) !important;
+  border: 1px solid #c9e6dc !important;
+}
+
+#senior-call-prompt .senior-ai-brand span {
+  color: var(--refine-ink) !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.035em !important;
+}
+
+#senior-call-prompt .senior-ai-brand small {
+  margin-top: 3px !important;
+  color: #52716a !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.42 !important;
+}
+
+#senior-call-prompt .senior-call-home h3 {
+  margin: 15px 0 11px !important;
+  color: var(--refine-ink) !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  line-height: 1.34 !important;
+  letter-spacing: -0.045em !important;
+}
+
+#senior-call-prompt .senior-call-highlight {
+  padding: 11px 12px !important;
+  background: #f7faf9 !important;
+}
+
+/* Home invitation: make contributing a new field experience visibly actionable. */
+.home-body .service-principle {
+  padding: 14px 14px 13px !important;
+  border: 1px solid #bed8e4 !important;
+  border-left: 4px solid var(--refine-blue) !important;
+  border-radius: 10px !important;
+  background: #edf7fb !important;
+  box-shadow: none !important;
+}
+
+.home-body .service-principle .principle-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 23px !important;
+  margin: 0 0 7px !important;
+  padding: 3px 7px !important;
+  border-radius: 5px !important;
+  background: #d8edf7 !important;
+  color: #1d6f93 !important;
+  font-size: 10.5px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.02em !important;
+  white-space: nowrap !important;
+}
+
+.home-body .service-principle b {
+  display: block !important;
+  color: var(--refine-ink) !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  line-height: 1.4 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.home-body .service-principle span {
+  display: block !important;
+  margin-top: 5px !important;
+  color: #486b7a !important;
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  line-height: 1.55 !important;
+}
+
+/* Keep the branded briefing name and its dispatch badge intact on the same line. */
+#senior-call-prompt .senior-ai-brand span,
+#senior-call-prompt .senior-call-home-head em {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#senior-call-prompt .senior-ai-brand small {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#senior-call-prompt .senior-call-context {
+  margin-top: 9px !important;
+  color: #55726c !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+}
+
+/* Keep the named knowledge service prominent; the individual rule remains supporting information. */
+#senior-call-prompt .senior-ai-brand span {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 26px !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  background: var(--refine-ink) !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1 !important;
+  box-shadow: 0 3px 7px rgba(21, 55, 70, 0.13) !important;
+}
+
+#senior-call-prompt .senior-call-home h3 {
+  margin-top: 14px !important;
+  margin-bottom: 10px !important;
+  font-size: 17px !important;
+  line-height: 1.42 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.senior-call-home:before, .shipment-card:before, .service-principle:before,
+.knowledge-card-mobile:after { display: none !important; }
+
+.primary-button, .primary-button.dark {
+  background: var(--refine-ink) !important;
+  border-color: var(--refine-ink) !important;
+  box-shadow: 0 5px 10px rgba(21, 55, 70, 0.14) !important;
+}
+
+.primary-button:not(:disabled):hover, .primary-button.dark:not(:disabled):hover { background: #0e2c38 !important; }
+
+.secondary-button, .ghost-button, .asset-result-links button, .evidence-action, .sample-media-button {
+  background: #ffffff !important;
+  border-color: #cbdce2 !important;
+  color: #29576a !important;
+  box-shadow: none !important;
+}
+
+.secondary-button:hover, .ghost-button:hover, .asset-result-links button:hover,
+.evidence-action:hover, .sample-media-button:hover {
+  background: #f0f7f9 !important;
+  border-color: #95bdcb !important;
+}
+
+.demo-action:after {
+  background: var(--refine-blue) !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Driving screen: the map is the primary visual object. */
+#drive-map-area .drive-banner, #drive-map-area .speed-card,
+#drive-map-area .risk-card, #drive-map-area .route-fab {
+  box-shadow: 0 4px 12px rgba(20, 55, 70, 0.12) !important;
+}
+
+#drive-map-area .drive-banner, #drive-map-area .speed-card, #drive-map-area .route-fab {
+  border-color: #cbdce2 !important;
+}
+
+#drive-map-area .risk-card {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid #cbdce2 !important;
+  border-left: 3px solid var(--refine-blue) !important;
+}
+
+#drive-map-area .risk-card.triggered { border-left-color: var(--refine-amber) !important; }
+#drive-map-area .risk-card.complete { border-left-color: var(--refine-green) !important; }
+
+/* Knowledge: green means verified, amber means candidate. The base remains calm and neutral. */
+.library-intro { border-left: 3px solid var(--refine-blue) !important; }
+.knowledge-research-card { overflow: hidden !important; }
+.knowledge-research-top { color: var(--refine-ink) !important; }
+.knowledge-research-top span { color: var(--refine-blue) !important; }
+.knowledge-research-top span:before { background: var(--refine-blue) !important; box-shadow: none !important; }
+.knowledge-research-top em { color: var(--refine-muted) !important; }
+
+.knowledge-card-mobile {
+  border-left: 3px solid #8fa5ae !important;
+  box-shadow: 0 3px 10px rgba(20, 55, 70, 0.055) !important;
+}
+
+.knowledge-card-mobile.featured, .knowledge-card-mobile.confirmed,
+.knowledge-card-mobile.official { border-left-color: var(--refine-green) !important; }
+.knowledge-card-mobile.candidate { border-left-color: var(--refine-amber) !important; }
+.knowledge-card-mobile .card-status, .knowledge-card-mobile .status-dot { box-shadow: none !important; }
+
+/* Report type colour is retained only as a small, meaningful state cue. */
+.report-types {
+  background: #edf2f4 !important;
+  border: 1px solid var(--refine-line) !important;
+  box-shadow: none !important;
+}
+
+.report-type { background: transparent !important; color: #58717c !important; box-shadow: none !important; }
+.report-type.active {
+  background: var(--report-type-accent, var(--refine-blue)) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.report-intro, .report-facts, .tacit-field, .auto-info, .report-draft { box-shadow: none !important; }
+.report-intro, .report-facts, .tacit-field { border-left: 3px solid var(--report-type-accent, var(--refine-blue)) !important; }
+
+.field-label, .field-label span, .auto-info strong, .report-draft strong { color: var(--refine-ink) !important; }
+
+.field-label textarea, .field-label input, .auto-info-item, .report-draft textarea {
+  background: #f8fafb !important;
+  border-color: #d5e1e5 !important;
+  color: var(--refine-ink) !important;
+}
+
+.field-label textarea:focus, .field-label input:focus, .report-draft textarea:focus {
+  border-color: var(--refine-blue) !important;
+  box-shadow: 0 0 0 3px rgba(28, 115, 152, 0.12) !important;
+}
+
+.report-body.report-mode-current .report-intro, .report-body.report-mode-current .report-facts,
+.report-body.report-mode-current .tacit-field, .report-body.report-mode-current .auto-info,
+.report-body.report-mode-knowledge .report-intro, .report-body.report-mode-knowledge .report-facts,
+.report-body.report-mode-knowledge .tacit-field, .report-body.report-mode-knowledge .auto-info,
+.report-body.report-mode-near-miss .report-intro, .report-body.report-mode-near-miss .report-facts,
+.report-body.report-mode-near-miss .tacit-field, .report-body.report-mode-near-miss .auto-info { background: #ffffff !important; }
+
+.demo-guide {
+  background: #eef6f8 !important;
+  border-left: 3px solid var(--refine-blue) !important;
+  color: #3e6676 !important;
+}
+
+.media-preview, .media-preview-item { border-color: #d5e1e5 !important; box-shadow: none !important; }
+
+/* Submission result: a single quiet success cue instead of green, orange and red competing at once. */
+.asset-result {
+  padding: 20px 16px 18px !important;
+  border-color: #bfddd4 !important;
+  border-top: 3px solid var(--refine-green) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 24px rgba(20, 55, 70, 0.09) !important;
+}
+
+.asset-result > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 26px !important;
+  padding: 4px 8px !important;
+  background: var(--refine-green-soft) !important;
+  color: var(--refine-green) !important;
+  border: 1px solid #c9e6dc !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+.asset-result h3 {
+  margin: 14px 0 15px !important;
+  color: var(--refine-ink) !important;
+  font-size: 19px !important;
+  line-height: 1.42 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.asset-result dl {
+  overflow: hidden !important;
+  margin: 0 0 16px !important;
+  background: #f8fbfa !important;
+  border: 1px solid #d8e6e2 !important;
+  border-radius: 9px !important;
+}
+
+.asset-result dl > div {
+  display: grid !important;
+  grid-template-columns: 72px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 11px 10px !important;
+  border-color: #d8e6e2 !important;
+}
+
+.asset-result dt { color: var(--refine-green) !important; font-size: 12px !important; font-weight: 800 !important; }
+.asset-result dd { color: #335360 !important; font-size: 12px !important; font-weight: 650 !important; line-height: 1.48 !important; }
+
+.asset-result .primary-button.dark {
+  width: 100% !important;
+  min-height: 52px !important;
+  margin: 0 0 10px !important;
+  background: var(--refine-ink) !important;
+}
+
+.asset-result-links { gap: 8px !important; }
+.asset-result-links button { min-height: 38px !important; font-size: 12px !important; }
+
+/* Manager approval has one review colour and one verified colour. */
+.manager-card.pending, .manager-card.reviewing { border-left: 3px solid var(--refine-amber) !important; }
+.manager-card.approved, .manager-card.complete { border-left: 3px solid var(--refine-green) !important; }
+
+.bottom-nav {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-top-color: var(--refine-line) !important;
+  box-shadow: 0 -4px 12px rgba(20, 55, 70, 0.035) !important;
+}
+
+.bottom-nav button { color: #6d848e !important; }
+.bottom-nav button.active { color: var(--refine-blue) !important; background: transparent !important; }
+.bottom-nav button.active:before { background: var(--refine-blue) !important; box-shadow: none !important; }
+
+@media (max-width: 420px) {
+  .asset-result h3 { font-size: 18px !important; }
+  .asset-result dl > div { grid-template-columns: 66px minmax(0, 1fr) !important; gap: 8px !important; }
+}
+
+/* Atomic controls must never split a short Korean word over two lines. */
+.app-header h1, .app-header h2, .live-chip, .status-pill, .shipment-top,
+.bottom-nav button span, .filter-row button, .report-type, .primary-button,
+.secondary-button, .ghost-button, .text-button, .evidence-action,
+.sample-media-button, .asset-result-links button, .yard-card em,
+.knowledge-card-mobile em, .knowledge-card-mobile time {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#drive-map-area .drive-banner-copy {
+  min-width: 0 !important;
+}
+
+#drive-map-area .drive-banner b,
+#drive-map-area .drive-banner small,
+#drive-map-area .drive-banner span {
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#drive-map-area .drive-banner b {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area .risk-card-head {
+  min-width: 0 !important;
+  gap: 8px !important;
+}
+
+#drive-map-area .risk-card-head > div,
+#drive-map-area .risk-card-head > div > span {
+  min-width: 0 !important;
+}
+
+#drive-map-area .risk-card-head > div {
+  flex: 1 1 auto !important;
+}
+
+#drive-map-area .risk-card-head b,
+#drive-map-area .risk-card-head small {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#drive-map-area .risk-card-head b {
+  white-space: nowrap !important;
+}
+
+#drive-map-area .risk-card-head small {
+  display: block !important;
+  white-space: nowrap !important;
+}
+
+#pipeline-score-mobile,
+#drive-map-area .route-fab span,
+#drive-map-area .route-fab b,
+#drive-map-area .route-fab em,
+#drive-map-area .speed-card,
+#drive-map-area .mini-pipeline span,
+#drive-map-area .risk-card > button {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+#pipeline-score-mobile {
+  flex: 0 0 auto !important;
+  min-width: 24px !important;
+  text-align: right !important;
+}
+
+/* Structured information can wrap as a sentence, but never character by character. */
+.auto-info b, .report-summary-fields dd, .knowledge-research-card dd,
+.manager-review-card label, .asset-result dd, .trip-summary p {
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+/* Site map: original, road-led navigation styling with facility context rather than illustration blocks. */
+#mobile-map .map-canvas { fill: #f4f6f4 !important; }
+#mobile-map .map-green { fill: #e4eee0 !important; }
+#mobile-map .map-green.light { fill: #edf3e8 !important; }
+#mobile-map .map-green.strip { fill: #e7efe4 !important; }
+#mobile-map .map-water { fill: #d9edf2 !important; }
+
+#mobile-map .map-yard {
+  fill: #eef1ef !important;
+  stroke: #d8dedb !important;
+  stroke-width: 1.2 !important;
+}
+
+#mobile-map .map-yard-grid {
+  fill: url(#yard-grid) !important;
+  opacity: 0.58 !important;
+  stroke: none !important;
+}
+
+#mobile-map #yard-grid path { stroke: #d6ded9 !important; stroke-width: 0.65 !important; }
+
+#mobile-map .map-building {
+  fill: #d9dfdd !important;
+  stroke: #c9d1ce !important;
+  stroke-width: 0.8 !important;
+}
+
+#mobile-map .map-building.small { fill: #cfd7d4 !important; }
+
+#mobile-map .map-parking {
+  fill: url(#parking-bays) !important;
+  stroke: #d1d9d5 !important;
+  stroke-width: 0.7 !important;
+}
+
+#mobile-map #parking-bays path { stroke: #bcc8c3 !important; stroke-width: 1.1 !important; }
+
+#mobile-map .map-place {
+  fill: #536f68 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em !important;
+}
+
+#mobile-map .map-subplace,
+#mobile-map .map-building-label {
+  fill: #788983 !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+}
+
+#mobile-map .road-outline,
+#mobile-map .road-surface,
+#mobile-map .road-divider,
+#mobile-map .road-lane {
+  fill: none !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+#mobile-map .road-outline.major { stroke: #cfd6db !important; stroke-width: 34px !important; }
+#mobile-map .road-surface.major { stroke: #ffffff !important; stroke-width: 30px !important; }
+#mobile-map .road-divider { stroke: #f2cb61 !important; stroke-width: 1.8px !important; stroke-dasharray: 8 9 !important; }
+#mobile-map .road-outline.access { stroke: #d4dadd !important; stroke-width: 23px !important; }
+#mobile-map .road-surface.access { stroke: #fbfcfc !important; stroke-width: 19px !important; }
+#mobile-map .road-outline.minor { stroke: #d9dfe2 !important; stroke-width: 18px !important; }
+#mobile-map .road-surface.minor { stroke: #ffffff !important; stroke-width: 14px !important; }
+#mobile-map .road-lane.access { stroke: #d4dde0 !important; stroke-width: 1.2px !important; stroke-dasharray: 4 7 !important; }
+
+#mobile-map .road-label {
+  fill: #82919a !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em !important;
+}
+
+#mobile-map .access-label { fill: #8999a1 !important; }
+
+#mobile-map .route-halo {
+  stroke: rgba(255, 255, 255, 0.96) !important;
+  stroke-width: 14px !important;
+}
+
+#mobile-map #mobile-planned-path { stroke: #247bd6 !important; stroke-width: 7px !important; }
+#mobile-map #mobile-actual-path { stroke: #d65757 !important; stroke-width: 7px !important; }
+#mobile-map #mobile-guidance-path { stroke: #d88a2d !important; stroke-width: 7px !important; }
+
+/* Gates are compact points of interest, not large cards that obscure the road. */
+#mobile-map .map-facility rect {
+  fill: rgba(255, 255, 255, 0.97) !important;
+  stroke: #c6d2d7 !important;
+  stroke-width: 1.25 !important;
+  filter: drop-shadow(0 2px 3px rgba(33, 58, 68, 0.12)) !important;
+}
+
+#mobile-map .map-facility circle { fill: #2c88a8 !important; }
+#mobile-map .map-facility.alt circle { fill: #26856d !important; }
+#mobile-map .map-facility.neutral circle { fill: #94a3aa !important; }
+
+#mobile-map .map-facility text {
+  fill: #244755 !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.035em !important;
+}
+
+#mobile-map .map-facility text + text {
+  fill: #5f7b86 !important;
+  font-size: 8.5px !important;
+  font-weight: 750 !important;
+}
+
+#mobile-map .map-facility.alt text + text { fill: #257d66 !important; }
+#mobile-map .map-facility.neutral text + text { fill: #7a8b93 !important; }
+
+/* Final dock: a destination pin and callout stay visible above all map detail. */
+#mobile-map .dock-pulse { fill: rgba(38, 133, 109, 0.16) !important; }
+
+#mobile-map .dock-pin {
+  fill: #237d67 !important;
+  stroke: #ffffff !important;
+  stroke-width: 3px !important;
+  filter: drop-shadow(0 3px 4px rgba(25, 91, 75, 0.28)) !important;
+}
+
+#mobile-map .dock-symbol {
+  fill: none !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.8px !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+#mobile-map .dock-callout rect {
+  fill: rgba(255, 255, 255, 0.98) !important;
+  stroke: #4fab93 !important;
+  stroke-width: 1.7px !important;
+  filter: drop-shadow(0 3px 6px rgba(28, 86, 73, 0.16)) !important;
+}
+
+#mobile-map .dock-callout text {
+  fill: #1a4d47 !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.04em !important;
+}
+
+#mobile-map .dock-callout text + text {
+  fill: #278269 !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+}
+
+#mobile-map #mobile-truck circle { fill: #ffffff !important; stroke: #247bd6 !important; }
+#mobile-map #mobile-truck path { fill: #247bd6 !important; }
+
+/* Home: make the first screen feel like an active dispatch dashboard, not a stack of forms. */
+.home-body {
+  padding-top: 14px !important;
+  padding-bottom: 92px !important;
+}
+
+.home-hero {
+  position: relative !important;
+  overflow: hidden !important;
+  margin: 0 0 14px !important;
+  padding: 18px 17px 15px !important;
+  border: 1px solid #123342 !important;
+  border-radius: 15px !important;
+  background: #153746 !important;
+  color: #ffffff !important;
+  box-shadow: 0 12px 24px rgba(20, 55, 70, 0.18) !important;
+}
+
+.home-hero:before,
+.home-hero:after {
+  position: absolute !important;
+  content: "" !important;
+  pointer-events: none !important;
+  border: 1px solid rgba(157, 214, 225, 0.2) !important;
+  border-radius: 50% !important;
+}
+
+.home-hero:before {
+  width: 154px !important;
+  height: 154px !important;
+  right: -62px !important;
+  top: -85px !important;
+}
+
+.home-hero:after {
+  width: 112px !important;
+  height: 112px !important;
+  right: -36px !important;
+  top: -62px !important;
+}
+
+.home-hero-top,
+.home-hero-meta {
+  position: relative !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+.home-hero-top > span {
+  color: #b6d6df !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.home-hero-top em {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 25px !important;
+  padding: 4px 7px !important;
+  border: 1px solid rgba(171, 223, 210, 0.4) !important;
+  border-radius: 5px !important;
+  background: rgba(104, 190, 165, 0.14) !important;
+  color: #c4ebdf !important;
+  font-size: 10.5px !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  white-space: nowrap !important;
+}
+
+.home-hero h2 {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 13px 0 7px !important;
+  color: #ffffff !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.home-hero p {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 0 !important;
+  color: #c5d9df !important;
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  line-height: 1.5 !important;
+}
+
+.home-hero-meta {
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  margin-top: 13px !important;
+}
+
+.home-hero-meta span {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 25px !important;
+  padding: 4px 7px !important;
+  border: 1px solid rgba(190, 218, 226, 0.22) !important;
+  border-radius: 5px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #d5e7eb !important;
+  font-size: 10.5px !important;
+  font-weight: 750 !important;
+  white-space: nowrap !important;
+}
+
+.home-body .shipment-card {
+  overflow: hidden !important;
+  padding: 15px 16px !important;
+  border: 1px solid #d1e0e5 !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 5px 13px rgba(20, 55, 70, 0.065) !important;
+}
+
+.home-body .shipment-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin: 0 0 12px !important;
+  padding: 0 0 11px !important;
+  background: transparent !important;
+  border-bottom: 1px solid #e0eaed !important;
+}
+
+.home-body .shipment-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+}
+
+.home-body .shipment-label i {
+  display: grid !important;
+  width: 24px !important;
+  height: 24px !important;
+  place-items: center !important;
+  border-radius: 6px !important;
+  background: var(--refine-blue-soft) !important;
+  color: var(--refine-blue) !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+}
+
+.home-body .shipment-top span {
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--refine-ink) !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+}
+
+.home-body .shipment-top em {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 24px !important;
+  padding: 4px 7px !important;
+  border: 1px solid #cae7de !important;
+  border-radius: 5px !important;
+  background: var(--refine-green-soft) !important;
+  color: var(--refine-green) !important;
+  font-size: 10.5px !important;
+  font-style: normal !important;
+  font-weight: 850 !important;
+  white-space: nowrap !important;
+}
+
+.home-body .route-row {
+  grid-template-columns: 18px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  margin: 12px 0 !important;
+}
+
+.home-body .route-row small { color: #738891 !important; font-size: 11px !important; font-weight: 800 !important; }
+.home-body .route-row b { color: var(--refine-ink) !important; font-size: 16px !important; font-weight: 850 !important; line-height: 1.35 !important; }
+.home-body .route-row span { color: #6c838d !important; font-size: 11.5px !important; line-height: 1.45 !important; }
+.home-body .route-line { height: 8px !important; margin-left: 8px !important; border-left-color: #a7c6d1 !important; }
+.home-body .pin { width: 10px !important; height: 10px !important; margin-top: 7px !important; }
+.home-body .red-pin { background: var(--refine-blue) !important; }
+
+.home-body .arrival-row {
+  margin-top: 10px !important;
+  padding: 10px 11px !important;
+  border: 1px solid #d6e5ea !important;
+  border-radius: 8px !important;
+  background: #f4f9fb !important;
+}
+
+.home-body .arrival-row span { color: #55737f !important; font-size: 12px !important; font-weight: 750 !important; }
+.home-body .arrival-row b { color: var(--refine-blue) !important; font-size: 16px !important; font-weight: 900 !important; }
+
+.home-body > #start-driving {
+  min-height: 53px !important;
+  margin-top: 16px !important;
+  border: 1px solid #103445 !important;
+  border-radius: 10px !important;
+  background: #153746 !important;
+  box-shadow: 0 8px 17px rgba(20, 55, 70, 0.18) !important;
+}
+
+/* First entry screen: a clear product introduction before role selection. */
+#screen-role.intro-screen {
+  padding: 22px 20px 25px !important;
+  background: #f3f7f8 !important;
+}
+
+.intro-visual {
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  min-height: 132px !important;
+  overflow: hidden !important;
+  padding: 15px 17px !important;
+  border: 1px solid #c6dce4 !important;
+  border-radius: 16px !important;
+  background: #e8f4f8 !important;
+}
+
+.intro-visual:before,
+.intro-visual:after {
+  position: absolute !important;
+  content: "" !important;
+  border: 1px solid rgba(28, 115, 152, 0.16) !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+}
+
+.intro-visual:before {
+  width: 172px !important;
+  height: 172px !important;
+  right: -50px !important;
+  top: -88px !important;
+}
+
+.intro-visual:after {
+  width: 112px !important;
+  height: 112px !important;
+  right: -18px !important;
+  top: -58px !important;
+}
+
+.intro-route-label {
+  position: relative !important;
+  z-index: 1 !important;
+  align-self: flex-start !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 25px !important;
+  padding: 4px 8px !important;
+  border: 1px solid #b8d8e4 !important;
+  border-radius: 5px !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: #277193 !important;
+  font-size: 10.5px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+}
+
+.intro-truck {
+  position: absolute !important;
+  z-index: 2 !important;
+  right: 17px !important;
+  bottom: 18px !important;
+  width: 106px !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.intro-truck svg {
+  width: 100% !important;
+  height: auto !important;
+  filter: drop-shadow(0 8px 7px rgba(20, 55, 70, 0.15)) !important;
+}
+
+.intro-route-dot {
+  position: absolute !important;
+  right: 124px !important;
+  bottom: 31px !important;
+  width: 92px !important;
+  height: 2px !important;
+  border-radius: 99px !important;
+  background: repeating-linear-gradient(90deg, #52a5c1 0 8px, transparent 8px 14px) !important;
+}
+
+.intro-route-dot:after {
+  position: absolute !important;
+  top: -4px !important;
+  left: -1px !important;
+  width: 10px !important;
+  height: 10px !important;
+  content: "" !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 50% !important;
+  background: #23826c !important;
+  box-shadow: 0 2px 5px rgba(28, 91, 75, 0.18) !important;
+}
+
+#screen-role .intro-copy {
+  margin-top: 20px !important;
+}
+
+#screen-role .intro-copy > small {
+  display: block !important;
+  color: #3c758d !important;
+  font-size: 11.5px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0.02em !important;
+}
+
+#screen-role .intro-copy h1 {
+  margin: 6px 0 9px !important;
+  color: var(--refine-ink) !important;
+  font-size: 34px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.065em !important;
+}
+
+#screen-role .intro-copy p {
+  margin: 0 !important;
+  color: var(--refine-ink) !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.055em !important;
+}
+
+#screen-role .intro-copy > span {
+  display: block !important;
+  margin-top: 9px !important;
+  color: #5b747f !important;
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  line-height: 1.55 !important;
+}
+
+.role-intro {
+  margin: 22px 0 10px !important;
+}
+
+.role-intro b,
+.role-intro span {
+  display: block !important;
+}
+
+.role-intro b {
+  color: var(--refine-ink) !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.role-intro span {
+  margin-top: 3px !important;
+  color: #70858e !important;
+  font-size: 11.5px !important;
+  font-weight: 650 !important;
+}
+
+#screen-role .role-cards {
+  gap: 9px !important;
+  margin-top: 0 !important;
+}
+
+#screen-role .role-cards button {
+  min-height: 84px !important;
+  padding: 12px !important;
+  border: 1px solid #d3e0e5 !important;
+  border-radius: 11px !important;
+  background: #ffffff !important;
+  box-shadow: 0 5px 12px rgba(20, 55, 70, 0.055) !important;
+}
+
+#screen-role .role-cards button:first-child { border-left: 3px solid #5c9181 !important; }
+#screen-role .role-cards button:last-child { border-left: 3px solid var(--refine-blue) !important; }
+
+#screen-role .role-icon {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  background: #edf4f1 !important;
+  color: #347864 !important;
+}
+
+#screen-role .role-icon.blue {
+  background: var(--refine-blue-soft) !important;
+  color: var(--refine-blue) !important;
+}
+
+#screen-role .role-cards small,
+#screen-role .role-cards b,
+#screen-role .role-cards span {
+  display: block !important;
+}
+
+#screen-role .role-cards small {
+  color: #77909a !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0.02em !important;
+}
+
+#screen-role .role-cards b {
+  margin-top: 2px !important;
+  color: var(--refine-ink) !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+}
+
+
+#screen-role .role-cards span {
+  margin-top: 3px !important;
+  color: #607782 !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+}
+
+#screen-role .role-cards em {
+  color: #6c8793 !important;
+  font-size: 25px !important;
+  font-style: normal !important;
+}

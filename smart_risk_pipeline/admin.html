@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logistics Admin</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f6;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #697386;
+      --line: #d9e0ea;
+      --blue: #2563eb;
+      --green: #168a50;
+      --orange: #d97706;
+      --red: #c2412d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    header {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: #111827;
+      color: #fff;
+      border-bottom: 1px solid #0b1220;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .top-status {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(22, 138, 80, 0.16);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(360px, 0.6fr);
+      gap: 16px;
+      padding: 16px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    section,
+    aside {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .section-head {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    button {
+      height: 32px;
+      border: 1px solid #b8c2d2;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #f8fafc;
+    }
+
+    .map-wrap {
+      height: 560px;
+      position: relative;
+      background: #dfe6ef;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-eta-panel {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 500;
+      display: grid;
+      gap: 4px;
+      min-width: 190px;
+      padding: 12px 14px;
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      border-radius: 8px;
+      background: rgba(17, 24, 39, 0.92);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.22);
+    }
+
+    .map-eta-panel span {
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .map-eta-panel strong {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .map-eta-panel small,
+    .map-eta-panel em {
+      color: #e2e8f0;
+      font-size: 12px;
+      font-style: normal;
+    }
+
+    .map-eta-panel em.delay-warn {
+      color: #fecaca;
+      font-weight: 700;
+    }
+
+    .map-eta-panel em.delay-ok {
+      color: #bbf7d0;
+      font-weight: 700;
+    }
+
+    .map-legend {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 500;
+      display: grid;
+      gap: 6px;
+      padding: 10px 12px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font-size: 12px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .legend-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .legend-line {
+      width: 26px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+
+    .legend-line.actual {
+      background: var(--orange);
+    }
+
+    .legend-line.deviation {
+      background: var(--red);
+    }
+
+    .legend-box {
+      width: 20px;
+      height: 12px;
+      border: 2px solid var(--blue);
+      background: rgba(37, 99, 235, 0.18);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 80px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .metric strong {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .side-body {
+      padding: 16px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .status-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .status-box h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .kv span:nth-child(odd) {
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      background: #f8fafc;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: #1d4ed8;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .badge.exited {
+      background: #e8f7ef;
+      color: var(--green);
+    }
+
+    .badge.waiting {
+      background: #fff4dd;
+      color: var(--orange);
+    }
+
+    .badge.entered {
+      background: #e0ecff;
+      color: var(--blue);
+    }
+
+    .badge.route-ok {
+      background: #e8f7ef;
+      color: var(--green);
+    }
+
+    .badge.route-off {
+      background: #ffe8e2;
+      color: var(--red);
+    }
+
+    .leaflet-container {
+      font-family: "Segoe UI", "Malgun Gothic", Arial, sans-serif;
+    }
+
+    .leaflet-tooltip.vehicle-label,
+    .leaflet-tooltip.facility-label {
+      border: 0;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #111827;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .destination-icon {
+      border: 0;
+      background: transparent;
+    }
+
+    .destination-pin {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      height: 28px;
+      padding: 0 10px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: #dc2626;
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .destination-pin::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 14px;
+      height: 14px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      background: #dc2626;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    @media (max-width: 960px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>운송 관제 대시보드</h1>
+    <div class="top-status">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="serverStatus">연결 확인 중</span>
+      <span id="updatedAt">-</span>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-head">
+        <h2>차량 위치</h2>
+        <button id="refreshButton" type="button">새로고침</button>
+      </div>
+      <div class="map-wrap">
+        <div id="map" role="img" aria-label="운송 경로 지도"></div>
+        <div class="map-eta-panel" aria-label="ETA 정보">
+          <span>남은 시간</span>
+          <strong id="mapEtaTime">-</strong>
+          <small id="mapEtaDetails">GPS 수신 대기</small>
+          <em id="mapEtaDelay">-</em>
+        </div>
+        <div class="map-legend" aria-label="지도 범례">
+          <div class="legend-row"><span class="legend-line"></span><span>계획 경로</span></div>
+          <div class="legend-row"><span class="legend-line actual"></span><span>실제 경로</span></div>
+          <div class="legend-row"><span class="legend-line deviation"></span><span>이탈 구간</span></div>
+          <div class="legend-row"><span class="legend-box"></span><span>하역장</span></div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <span>운행 차량</span>
+          <strong id="vehicleCount">0</strong>
+        </div>
+        <div class="metric">
+          <span>하역장 상태</span>
+          <strong id="facilityState">-</strong>
+        </div>
+        <div class="metric">
+          <span>체류 시간</span>
+          <strong id="dwellTime">-</strong>
+        </div>
+        <div class="metric">
+          <span>ETA</span>
+          <strong id="etaState">-</strong>
+        </div>
+        <div class="metric">
+          <span>경로 상태</span>
+          <strong id="routeState">-</strong>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="section-head">
+        <h2>현황</h2>
+      </div>
+      <div class="side-body">
+        <div class="status-box">
+          <h3>최신 차량</h3>
+          <div class="kv" id="vehicleDetails"></div>
+        </div>
+        <div class="status-box">
+          <h3>경로 이탈 판단</h3>
+          <div class="kv" id="routeDetails"></div>
+        </div>
+        <div class="status-box">
+          <h3>하역장</h3>
+          <div class="kv" id="facilityDetails"></div>
+        </div>
+        <div class="status-box">
+          <h3>최근 이벤트</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>차량</th>
+                <th>이벤트</th>
+                <th>체류</th>
+              </tr>
+            </thead>
+            <tbody id="eventRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    const serverStatus = document.querySelector("#serverStatus");
+    const updatedAt = document.querySelector("#updatedAt");
+    const vehicleCount = document.querySelector("#vehicleCount");
+    const facilityState = document.querySelector("#facilityState");
+    const dwellTime = document.querySelector("#dwellTime");
+    const etaState = document.querySelector("#etaState");
+    const mapEtaTime = document.querySelector("#mapEtaTime");
+    const mapEtaDetails = document.querySelector("#mapEtaDetails");
+    const mapEtaDelay = document.querySelector("#mapEtaDelay");
+    const routeState = document.querySelector("#routeState");
+    const vehicleDetails = document.querySelector("#vehicleDetails");
+    const routeDetails = document.querySelector("#routeDetails");
+    const facilityDetails = document.querySelector("#facilityDetails");
+    const eventRows = document.querySelector("#eventRows");
+    const refreshButton = document.querySelector("#refreshButton");
+    const ROUTE_DEVIATION_THRESHOLD_M = 50;
+    const SNAP_TO_ROUTE_THRESHOLD_M = 60;
+    const MIN_DEVIATION_POINTS = 2;
+    const DEFAULT_CENTER = [36.736924, 127.073425];
+
+    const leafletMap = L.map("map", {
+      zoomControl: true,
+      preferCanvas: true
+    }).setView(DEFAULT_CENTER, 17);
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(leafletMap);
+
+    const plannedRouteLayer = L.layerGroup().addTo(leafletMap);
+    const facilityLayer = L.layerGroup().addTo(leafletMap);
+    const trailLayer = L.layerGroup().addTo(leafletMap);
+    const vehicleLayer = L.layerGroup().addTo(leafletMap);
+    let firstFitDone = false;
+
+    const destinationIcon = L.divIcon({
+      className: "destination-icon",
+      html: '<div class="destination-pin">도착</div>',
+      iconSize: [70, 42],
+      iconAnchor: [35, 38]
+    });
+
+    const labelByEvent = {
+      entered: "진입",
+      waiting: "대기",
+      exited: "출차"
+    };
+
+    function text(value) {
+      if (value === null || value === undefined || value === "") {
+        return "-";
+      }
+      return String(value);
+    }
+
+    async function getJson(path) {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`${path} ${response.status}`);
+      }
+      return response.json();
+    }
+
+    function polygonPoints(feature) {
+      if (!feature || !feature.geometry || feature.geometry.type !== "Polygon") {
+        return [];
+      }
+      return feature.geometry.coordinates[0].map(([lng, lat]) => ({ lng, lat }));
+    }
+
+    function toLatLng(point) {
+      return [Number(point.lat), Number(point.lng)];
+    }
+
+    function routeSegments(plannedRoute) {
+      const segments = [];
+      for (const feature of plannedRoute.features || []) {
+        const geometry = feature.geometry || {};
+        if (geometry.type === "LineString") {
+          segments.push(geometry.coordinates.map(([lng, lat]) => ({ lng, lat })));
+        }
+        if (geometry.type === "MultiLineString") {
+          for (const line of geometry.coordinates) {
+            segments.push(line.map(([lng, lat]) => ({ lng, lat })));
+          }
+        }
+      }
+      return segments
+        .map((segment) => segment.filter((point, index, points) => {
+          if (index === 0) {
+            return true;
+          }
+          const previous = points[index - 1];
+          return point.lng !== previous.lng || point.lat !== previous.lat;
+        }))
+        .filter((segment) => segment.length > 1);
+    }
+
+    function routeDestination(plannedRoute) {
+      const segments = routeSegments(plannedRoute);
+      const lastSegment = segments[segments.length - 1];
+      if (!lastSegment || !lastSegment.length) {
+        return null;
+      }
+      return lastSegment[lastSegment.length - 1];
+    }
+
+    function segmentProjection(point, start, end) {
+      const latScale = 111320;
+      const lngScale = 111320 * Math.cos((point.lat * Math.PI) / 180);
+      const ax = (start.lng - point.lng) * lngScale;
+      const ay = (start.lat - point.lat) * latScale;
+      const bx = (end.lng - point.lng) * lngScale;
+      const by = (end.lat - point.lat) * latScale;
+      const dx = bx - ax;
+      const dy = by - ay;
+      const lengthSq = dx * dx + dy * dy;
+      const t = lengthSq === 0 ? 0 : Math.max(0, Math.min(1, ((-ax) * dx + (-ay) * dy) / lengthSq));
+      const closestX = ax + t * dx;
+      const closestY = ay + t * dy;
+      const closest = {
+        lng: point.lng + closestX / lngScale,
+        lat: point.lat + closestY / latScale
+      };
+      return {
+        distanceMeters: Math.hypot(closestX, closestY),
+        closest,
+        ratio: t
+      };
+    }
+
+    function distanceToSegmentMeters(point, start, end) {
+      return segmentProjection(point, start, end).distanceMeters;
+    }
+
+    function distanceBetweenMeters(start, end) {
+      const earthRadiusM = 6371000;
+      const lat1 = (start.lat * Math.PI) / 180;
+      const lat2 = (end.lat * Math.PI) / 180;
+      const dLat = ((end.lat - start.lat) * Math.PI) / 180;
+      const dLng = ((end.lng - start.lng) * Math.PI) / 180;
+      const a =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+      return earthRadiusM * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function distanceToRouteMeters(vehicle, plannedRoute) {
+      if (!vehicle) {
+        return null;
+      }
+      const point = {
+        lng: Number(vehicle.longitude),
+        lat: Number(vehicle.latitude)
+      };
+      const distances = [];
+      for (const segment of routeSegments(plannedRoute)) {
+        for (let index = 0; index < segment.length - 1; index += 1) {
+          distances.push(distanceToSegmentMeters(point, segment[index], segment[index + 1]));
+        }
+      }
+      return distances.length ? Math.min(...distances) : null;
+    }
+
+    function closestPointOnRoute(point, plannedRoute) {
+      let best = null;
+
+      for (const segment of routeSegments(plannedRoute)) {
+        for (let index = 0; index < segment.length - 1; index += 1) {
+          const projection = segmentProjection(point, segment[index], segment[index + 1]);
+          if (!best || projection.distanceMeters < best.distanceMeters) {
+            best = projection;
+          }
+        }
+      }
+
+      return best;
+    }
+
+    function displayPointForRow(row, plannedRoute) {
+      const raw = {
+        lat: Number(row.latitude),
+        lng: Number(row.longitude)
+      };
+      if (!Number.isFinite(raw.lat) || !Number.isFinite(raw.lng)) {
+        return null;
+      }
+
+      const matched = closestPointOnRoute(raw, plannedRoute);
+      if (matched && matched.distanceMeters <= SNAP_TO_ROUTE_THRESHOLD_M) {
+        return [matched.closest.lat, matched.closest.lng];
+      }
+
+      return [raw.lat, raw.lng];
+    }
+
+    function displayPointForVehicle(vehicle, plannedRoute) {
+      const point = displayPointForRow(vehicle, plannedRoute);
+      return point || [Number(vehicle.latitude), Number(vehicle.longitude)];
+    }
+
+    function routeSummary(plannedRoute) {
+      for (const feature of plannedRoute.features || []) {
+        const properties = feature.properties || {};
+        const summary = properties.summary || {};
+        const distance = Number(summary.distance);
+        const duration = Number(summary.duration);
+
+        if (Number.isFinite(distance) || Number.isFinite(duration)) {
+          return {
+            distanceMeters: Number.isFinite(distance) ? distance : null,
+            durationSeconds: Number.isFinite(duration) ? duration : null
+          };
+        }
+
+        const segments = properties.segments || [];
+        const segmentDistance = segments.reduce((sum, segment) => sum + Number(segment.distance || 0), 0);
+        const segmentDuration = segments.reduce((sum, segment) => sum + Number(segment.duration || 0), 0);
+        if (segmentDistance || segmentDuration) {
+          return {
+            distanceMeters: segmentDistance || null,
+            durationSeconds: segmentDuration || null
+          };
+        }
+      }
+
+      return {
+        distanceMeters: null,
+        durationSeconds: null
+      };
+    }
+
+    function routeProgress(plannedRoute, vehicle) {
+      if (!vehicle) {
+        return null;
+      }
+
+      const point = {
+        lng: Number(vehicle.longitude),
+        lat: Number(vehicle.latitude)
+      };
+      if (!Number.isFinite(point.lat) || !Number.isFinite(point.lng)) {
+        return null;
+      }
+
+      let cumulativeMeters = 0;
+      let totalLineMeters = 0;
+      let best = null;
+
+      for (const segment of routeSegments(plannedRoute)) {
+        for (let index = 0; index < segment.length - 1; index += 1) {
+          const start = segment[index];
+          const end = segment[index + 1];
+          const segmentMeters = distanceBetweenMeters(start, end);
+          const projection = segmentProjection(point, start, end);
+          const progressMeters = cumulativeMeters + segmentMeters * projection.ratio;
+
+          if (!best || projection.distanceMeters < best.distanceMeters) {
+            best = {
+              distanceMeters: projection.distanceMeters,
+              progressMeters
+            };
+          }
+
+          cumulativeMeters += segmentMeters;
+          totalLineMeters += segmentMeters;
+        }
+      }
+
+      if (!best || totalLineMeters <= 0) {
+        return null;
+      }
+
+      return {
+        distanceMeters: best.distanceMeters,
+        progressMeters: Math.max(0, Math.min(best.progressMeters, totalLineMeters)),
+        totalLineMeters
+      };
+    }
+
+    function deviationGroups(rows, plannedRoute) {
+      const groups = [];
+      let current = [];
+
+      for (const row of rows) {
+        const lat = Number(row.latitude);
+        const lng = Number(row.longitude);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+          continue;
+        }
+
+        const distance = distanceToRouteMeters({ latitude: lat, longitude: lng }, plannedRoute);
+        const isDeviated = distance !== null && distance > ROUTE_DEVIATION_THRESHOLD_M;
+
+        if (isDeviated) {
+          current.push([lat, lng]);
+          continue;
+        }
+
+        if (current.length >= MIN_DEVIATION_POINTS) {
+          groups.push(current);
+          current = [];
+        }
+      }
+
+      if (current.length >= MIN_DEVIATION_POINTS) {
+        groups.push(current);
+      }
+
+      return groups;
+    }
+
+    function normalGroups(rows, plannedRoute) {
+      const groups = [];
+      let current = [];
+
+      for (const row of rows) {
+        const raw = {
+          lat: Number(row.latitude),
+          lng: Number(row.longitude)
+        };
+        if (!Number.isFinite(raw.lat) || !Number.isFinite(raw.lng)) {
+          continue;
+        }
+
+        const matched = closestPointOnRoute(raw, plannedRoute);
+        const isNormal = matched && matched.distanceMeters <= ROUTE_DEVIATION_THRESHOLD_M;
+
+        if (isNormal) {
+          current.push([matched.closest.lat, matched.closest.lng]);
+          continue;
+        }
+
+        if (current.length) {
+          groups.push(current);
+          current = [];
+        }
+      }
+
+      if (current.length) {
+        groups.push(current);
+      }
+
+      return groups;
+    }
+
+    function groupedHistory(history) {
+      return history.reduce((groups, row) => {
+        const key = row.vehicle_id || "UNKNOWN";
+        if (!groups[key]) {
+          groups[key] = [];
+        }
+        groups[key].push(row);
+        return groups;
+      }, {});
+    }
+
+    function primaryVehicle(vehicles) {
+      return [...vehicles].sort((left, right) => {
+        const timeCompare = String(right.timestamp || "").localeCompare(String(left.timestamp || ""));
+        if (timeCompare !== 0) {
+          return timeCompare;
+        }
+        return Number(right.id || 0) - Number(left.id || 0);
+      })[0];
+    }
+
+    function collectBounds(facilities, plannedRoute, vehicles, history) {
+      const bounds = [];
+      for (const feature of facilities.features || []) {
+        for (const point of polygonPoints(feature)) {
+          bounds.push(toLatLng(point));
+        }
+      }
+      for (const segment of routeSegments(plannedRoute)) {
+        for (const point of segment) {
+          bounds.push(toLatLng(point));
+        }
+      }
+      for (const vehicle of vehicles) {
+        bounds.push([Number(vehicle.latitude), Number(vehicle.longitude)]);
+      }
+      for (const row of history) {
+        bounds.push([Number(row.latitude), Number(row.longitude)]);
+      }
+      return bounds.filter(([lat, lng]) => Number.isFinite(lat) && Number.isFinite(lng));
+    }
+
+    function renderMap(facilities, plannedRoute, vehicles, history) {
+      plannedRouteLayer.clearLayers();
+      facilityLayer.clearLayers();
+      trailLayer.clearLayers();
+      vehicleLayer.clearLayers();
+      const focusVehicle = primaryVehicle(vehicles);
+      const visibleVehicles = focusVehicle ? [focusVehicle] : [];
+      const visibleHistory = focusVehicle
+        ? history.filter((row) => row.vehicle_id === focusVehicle.vehicle_id)
+        : [];
+
+      for (const segment of routeSegments(plannedRoute)) {
+        const latLngs = segment.map(toLatLng);
+        L.polyline(latLngs, {
+          color: "#2563eb",
+          weight: 12,
+          opacity: 0.16,
+          lineCap: "round",
+          lineJoin: "round"
+        }).addTo(plannedRouteLayer);
+        L.polyline(latLngs, {
+          color: "#2563eb",
+          weight: 5,
+          opacity: 0.92,
+          lineCap: "round",
+          lineJoin: "round"
+        }).addTo(plannedRouteLayer);
+      }
+
+      const destination = routeDestination(plannedRoute);
+      if (destination) {
+        L.marker(toLatLng(destination), {
+          icon: destinationIcon,
+          zIndexOffset: 800
+        })
+          .bindTooltip("목적지", {
+            permanent: false,
+            direction: "top",
+            className: "vehicle-label"
+          })
+          .addTo(plannedRouteLayer);
+      }
+
+      for (const feature of facilities.features || []) {
+        const points = polygonPoints(feature);
+        if (!points.length) {
+          continue;
+        }
+        L.polygon(points.map(toLatLng), {
+          color: "#1d4ed8",
+          weight: 2,
+          fillColor: "#2563eb",
+          fillOpacity: 0.16
+        })
+          .bindTooltip(text(feature.properties.name), {
+            permanent: true,
+            direction: "top",
+            className: "facility-label"
+          })
+          .addTo(facilityLayer);
+      }
+
+      const histories = groupedHistory(visibleHistory);
+      for (const rows of Object.values(histories)) {
+        for (const group of normalGroups(rows, plannedRoute)) {
+          if (group.length > 1) {
+            L.polyline(group, {
+              color: "#d97706",
+              weight: 6,
+              opacity: 0.86,
+              lineCap: "round",
+              lineJoin: "round"
+            }).addTo(trailLayer);
+          }
+
+          for (const latLng of group.slice(-12, -1)) {
+            L.circleMarker(latLng, {
+              radius: 4,
+              color: "#f59e0b",
+              fillColor: "#f59e0b",
+              fillOpacity: 0.7,
+              opacity: 0.7,
+              weight: 1
+            }).addTo(trailLayer);
+          }
+        }
+
+        for (const group of deviationGroups(rows, plannedRoute)) {
+          if (group.length > 1) {
+            L.polyline(group, {
+              color: "#dc2626",
+              weight: 8,
+              opacity: 0.92,
+              lineCap: "round",
+              lineJoin: "round"
+            }).addTo(trailLayer);
+          }
+
+          for (const latLng of group) {
+            L.circleMarker(latLng, {
+              radius: 6,
+              color: "#991b1b",
+              fillColor: "#dc2626",
+              fillOpacity: 0.95,
+              opacity: 1,
+              weight: 2
+            }).addTo(trailLayer);
+          }
+        }
+      }
+
+      for (const vehicle of visibleVehicles) {
+        const latLng = displayPointForVehicle(vehicle, plannedRoute);
+        if (!Number.isFinite(latLng[0]) || !Number.isFinite(latLng[1])) {
+          continue;
+        }
+        const routeDistance = distanceToRouteMeters(vehicle, plannedRoute);
+        const isVehicleDeviated = routeDistance !== null && routeDistance > ROUTE_DEVIATION_THRESHOLD_M;
+        const markerColor = isVehicleDeviated ? "#dc2626" : "#d97706";
+        L.circleMarker(latLng, {
+          radius: 18,
+          color: markerColor,
+          fillColor: markerColor,
+          fillOpacity: 0.16,
+          opacity: 0.4,
+          weight: 2
+        }).addTo(vehicleLayer);
+        L.circleMarker(latLng, {
+          radius: 9,
+          color: "#fff",
+          fillColor: markerColor,
+          fillOpacity: 1,
+          opacity: 1,
+          weight: 3
+        })
+          .bindTooltip(text(vehicle.vehicle_id), {
+            permanent: true,
+            direction: "right",
+            offset: [12, 0],
+            className: "vehicle-label"
+          })
+          .addTo(vehicleLayer);
+      }
+
+      const bounds = collectBounds(facilities, plannedRoute, visibleVehicles, visibleHistory);
+      if (!firstFitDone && bounds.length) {
+        leafletMap.fitBounds(bounds, { padding: [42, 42], maxZoom: 18 });
+        firstFitDone = true;
+      }
+    }
+
+    function setDetails(container, rows) {
+      container.innerHTML = rows
+        .map(([key, value]) => `<span>${key}</span><strong>${text(value)}</strong>`)
+        .join("");
+    }
+
+    function parseTimeMs(value) {
+      const timestamp = Date.parse(value);
+      return Number.isFinite(timestamp) ? timestamp : null;
+    }
+
+    function historyForVehicle(history, vehicle) {
+      if (!vehicle) {
+        return [];
+      }
+
+      return history
+        .filter((row) => row.vehicle_id === vehicle.vehicle_id)
+        .sort((left, right) => {
+          const leftTime = parseTimeMs(left.timestamp) || 0;
+          const rightTime = parseTimeMs(right.timestamp) || 0;
+          if (leftTime !== rightTime) {
+            return leftTime - rightTime;
+          }
+          return Number(left.id || 0) - Number(right.id || 0);
+        });
+    }
+
+    function formatDistance(meters) {
+      if (!Number.isFinite(meters)) {
+        return "-";
+      }
+      if (meters >= 1000) {
+        return `${(meters / 1000).toFixed(2)}km`;
+      }
+      return `${Math.round(meters)}m`;
+    }
+
+    function formatDuration(seconds) {
+      if (!Number.isFinite(seconds)) {
+        return "-";
+      }
+
+      const rounded = Math.max(0, Math.round(seconds));
+      const hours = Math.floor(rounded / 3600);
+      const minutes = Math.round((rounded % 3600) / 60);
+
+      if (hours > 0) {
+        return `${hours}시간 ${minutes}분`;
+      }
+      return `${minutes}분`;
+    }
+
+    function formatDelay(seconds) {
+      if (!Number.isFinite(seconds)) {
+        return "-";
+      }
+      if (Math.abs(seconds) < 30) {
+        return "정상 범위";
+      }
+
+      const prefix = seconds > 0 ? "+" : "-";
+      return `${prefix}${formatDuration(Math.abs(seconds))}`;
+    }
+
+    function formatClock(timestampMs) {
+      if (!Number.isFinite(timestampMs)) {
+        return "-";
+      }
+      return new Date(timestampMs).toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    function etaMetrics(plannedRoute, vehicle, history) {
+      const summary = routeSummary(plannedRoute);
+      const progress = routeProgress(plannedRoute, vehicle);
+
+      if (!vehicle || !progress || !summary.durationSeconds) {
+        return null;
+      }
+
+      const rows = historyForVehicle(history, vehicle);
+      const firstTimeMs = rows.length ? parseTimeMs(rows[0].timestamp) : null;
+      const latestTimeMs =
+        parseTimeMs(vehicle.timestamp) ||
+        (rows.length ? parseTimeMs(rows[rows.length - 1].timestamp) : null);
+      const progressRatio = Math.max(0, Math.min(1, progress.progressMeters / progress.totalLineMeters));
+      const plannedDistanceMeters = summary.distanceMeters || progress.totalLineMeters;
+      const remainingDistanceMeters = Math.max(0, plannedDistanceMeters * (1 - progressRatio));
+      const plannedElapsedSeconds = summary.durationSeconds * progressRatio;
+      const plannedRemainingSeconds = summary.durationSeconds * (1 - progressRatio);
+      const actualElapsedSeconds =
+        firstTimeMs !== null && latestTimeMs !== null && latestTimeMs >= firstTimeMs
+          ? (latestTimeMs - firstTimeMs) / 1000
+          : null;
+      const delaySeconds =
+        actualElapsedSeconds !== null ? actualElapsedSeconds - plannedElapsedSeconds : null;
+      const adjustedRemainingSeconds =
+        delaySeconds !== null
+          ? Math.max(0, plannedRemainingSeconds + Math.max(0, delaySeconds))
+          : plannedRemainingSeconds;
+      const etaTimeMs =
+        latestTimeMs !== null ? latestTimeMs + adjustedRemainingSeconds * 1000 : null;
+
+      return {
+        plannedDistanceMeters,
+        plannedDurationSeconds: summary.durationSeconds,
+        remainingDistanceMeters,
+        remainingSeconds: adjustedRemainingSeconds,
+        progressRatio,
+        actualElapsedSeconds,
+        plannedElapsedSeconds,
+        delaySeconds,
+        etaTimeMs
+      };
+    }
+
+    function setEtaPanel(eta) {
+      if (!eta) {
+        etaState.textContent = "계산 대기";
+        mapEtaTime.textContent = "-";
+        mapEtaDetails.textContent = "GPS 로그 수신 후 계산";
+        mapEtaDelay.textContent = "API 경로 필요";
+        mapEtaDelay.className = "";
+        return;
+      }
+
+      etaState.textContent = formatDuration(eta.remainingSeconds);
+      mapEtaTime.textContent = formatDuration(eta.remainingSeconds);
+      mapEtaDetails.textContent = `${formatDistance(eta.remainingDistanceMeters)} 남음 · ${formatClock(eta.etaTimeMs)} 도착`;
+      mapEtaDelay.textContent = `지연 ${formatDelay(eta.delaySeconds)}`;
+      mapEtaDelay.className = eta.delaySeconds > 30 ? "delay-warn" : "delay-ok";
+    }
+
+    function renderVehicles(vehicles) {
+      vehicleCount.textContent = vehicles.length;
+      const vehicle = primaryVehicle(vehicles);
+      if (!vehicle) {
+        setDetails(vehicleDetails, [["차량 ID", "-"], ["위도", "-"], ["경도", "-"], ["속도", "-"]]);
+        return;
+      }
+
+      setDetails(vehicleDetails, [
+        ["차량 ID", vehicle.vehicle_id],
+        ["위도", Number(vehicle.latitude).toFixed(6)],
+        ["경도", Number(vehicle.longitude).toFixed(6)],
+        ["속도", `${vehicle.speed_kmh} km/h`],
+        ["시간", vehicle.timestamp]
+      ]);
+    }
+
+    function renderRouteStatus(plannedRoute, vehicles, history) {
+      const vehicle = primaryVehicle(vehicles);
+      const distance = distanceToRouteMeters(vehicle, plannedRoute);
+      const eta = etaMetrics(plannedRoute, vehicle, history);
+
+      if (!vehicle) {
+        setEtaPanel(null);
+        routeState.textContent = "-";
+        setDetails(routeDetails, [["상태", "-"], ["기준 거리", "-"], ["판단", "차량 GPS 대기"]]);
+        return;
+      }
+
+      if (distance === null) {
+        setEtaPanel(null);
+        routeState.textContent = "경로 없음";
+        setDetails(routeDetails, [
+          ["상태", "계획 경로 없음"],
+          ["기준 거리", "-"],
+          ["판단", "planned_route.geojson 확인 필요"]
+        ]);
+        return;
+      }
+
+      const isDeviated = distance > ROUTE_DEVIATION_THRESHOLD_M;
+      setEtaPanel(eta);
+      routeState.textContent = isDeviated ? "이탈" : "정상";
+      const rows = [
+        [
+          "상태",
+          `<span class="badge ${isDeviated ? "route-off" : "route-ok"}">${isDeviated ? "경로 이탈" : "경로 정상"}</span>`
+        ],
+        ["기준 거리", `${distance.toFixed(1)}m`],
+        ["이탈 기준", `${ROUTE_DEVIATION_THRESHOLD_M}m`],
+        [
+          "판단",
+          isDeviated
+            ? "계획 경로와 실제 GPS가 떨어졌습니다"
+            : "계획 경로 근처에서 이동 중입니다"
+        ]
+      ];
+
+      if (eta) {
+        rows.push(
+          ["API 총 거리", formatDistance(eta.plannedDistanceMeters)],
+          ["API 예상 시간", formatDuration(eta.plannedDurationSeconds)],
+          ["진행률", `${Math.round(eta.progressRatio * 100)}%`],
+          ["남은 거리", formatDistance(eta.remainingDistanceMeters)],
+          ["남은 시간", formatDuration(eta.remainingSeconds)],
+          ["예상 도착", formatClock(eta.etaTimeMs)],
+          ["지연 추정", formatDelay(eta.delaySeconds)]
+        );
+      } else {
+        rows.push(["ETA", "GPS 로그 또는 API duration 대기"]);
+      }
+
+      setDetails(routeDetails, rows);
+    }
+
+    function renderStatus(statuses) {
+      const status = statuses[0];
+      if (!status) {
+        facilityState.textContent = "-";
+        dwellTime.textContent = "-";
+        setDetails(facilityDetails, [["시설", "-"], ["상태", "-"], ["체류", "-"]]);
+        return;
+      }
+
+      facilityState.textContent = labelByEvent[status.event_type] || status.event_type;
+      dwellTime.textContent = `${status.dwell_seconds}s`;
+      setDetails(facilityDetails, [
+        ["시설", status.facility_name],
+        ["상태", labelByEvent[status.event_type] || status.event_type],
+        ["체류", `${status.dwell_seconds}s`],
+        ["속도", `${status.speed_kmh} km/h`],
+        ["시간", status.timestamp]
+      ]);
+    }
+
+    function renderEvents(events) {
+      eventRows.innerHTML = events.slice(0, 8).map((event) => {
+        const label = labelByEvent[event.event_type] || event.event_type;
+        return `
+          <tr>
+            <td>${text(event.vehicle_id)}</td>
+            <td><span class="badge ${event.event_type}">${label}</span></td>
+            <td>${event.dwell_seconds}s</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function refresh() {
+      try {
+        const [facilities, plannedRoute, vehicles, history, statuses, events] = await Promise.all([
+          getJson("/facilities.geojson"),
+          getJson("/planned_route.geojson"),
+          getJson("/vehicles/latest"),
+          getJson("/vehicles/history?limit=80"),
+          getJson("/facilities/status"),
+          getJson("/facilities/events")
+        ]);
+
+        renderMap(facilities, plannedRoute, vehicles, history);
+        renderVehicles(vehicles);
+        renderRouteStatus(plannedRoute, vehicles, history);
+        renderStatus(statuses);
+        renderEvents(events);
+        serverStatus.textContent = "서버 연결됨";
+        updatedAt.textContent = new Date().toLocaleTimeString("ko-KR");
+      } catch (error) {
+        serverStatus.textContent = "서버 연결 실패";
+        updatedAt.textContent = error.message;
+      }
+    }
+
+    refreshButton.addEventListener("click", () => {
+      firstFitDone = false;
+      refresh();
+    });
+    refresh();
+    setInterval(refresh, 1000);
+  </script>
+</body>
+</html>

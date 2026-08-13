@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="화물 운송차">
+  <rect width="128" height="128" rx="28" fill="#f7f9fb"/>
+  <rect x="15" y="35" width="66" height="46" rx="7" fill="#08213a"/>
+  <path d="M81 50h20l16 19v12H81z" fill="#1178c9"/>
+  <path d="M90 56h9l10 12H90z" fill="#eaf5ff"/>
+  <rect x="10" y="77" width="111" height="8" rx="4" fill="#10a889"/>
+  <circle cx="39" cy="88" r="14" fill="#172330"/>
+  <circle cx="39" cy="88" r="6" fill="#fff"/>
+  <circle cx="96" cy="88" r="14" fill="#172330"/>
+  <circle cx="96" cy="88" r="6" fill="#fff"/>
+</svg>

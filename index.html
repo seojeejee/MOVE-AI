@@ -1,0 +1,290 @@
+﻿<!doctype html>
+<html lang="ko" class="app-loading">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f9fb">
+  <meta name="description" content="길새김 운송 현장 안내 서비스">
+  <title>길새김 | 운송 현장 안내</title>
+  <style>
+    .icon-sprite { display: none !important; }
+    html.app-loading .workbench { visibility: hidden !important; }
+    html.app-loading body { background: #f5f7f8 !important; }
+    html.app-loading *, html.app-loading *::before, html.app-loading *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  </style>
+  <script>window.setTimeout(function(){document.documentElement.classList.remove('app-loading');},2500);</script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="truck-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/readability.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/clarity.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/semantic-colors.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/report-library-refresh.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/map-layout.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/report-theme.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/report-common.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/knowledge-clarity.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/contrast-system.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/visual-emphasis.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/production-refinement.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/reference-product-theme.css?v=20260810-stable-1">
+  <link rel="stylesheet" href="css/navigation-overlay.css?v=20260810-stable-1">
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-hardhat" viewBox="0 0 24 24"><path d="M5 11a7 7 0 0 1 14 0M9 11V7.7M15 11V7.7M3 11h18v3H3zM7.5 18h9"/></symbol>
+    <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="icon-route" viewBox="0 0 24 24"><path d="m12 3 7 17-7-4-7 4 7-17Z"/></symbol>
+    <symbol id="icon-knowledge" viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22V5.5ZM20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22V5.5Z"/></symbol>
+    <symbol id="icon-report" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="icon-dashboard" viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-12h6V4h-6v4Z"/></symbol>
+    <symbol id="icon-approved" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></symbol>
+  </svg>
+  <div class="workbench">
+    <div class="phone-shell" aria-live="polite">
+      <div class="phone-status"><span id="current-time">--:--</span><strong>길새김</strong><span class="status-indicators" aria-label="Network connected and battery charged"><svg class="status-wifi" viewBox="0 0 24 18" aria-hidden="true"><path d="M2 5.5a15 15 0 0 1 20 0"/><path d="M5.5 9a10 10 0 0 1 13 0"/><path d="M9 12.5a5 5 0 0 1 6 0"/><circle cx="12" cy="15.2" r="1.2"/></svg><svg class="status-battery" viewBox="0 0 26 14" aria-hidden="true"><rect x="1" y="2" width="20" height="10" rx="2"/><path d="M23 5v4"/><rect class="status-battery-fill" x="3" y="4" width="15" height="6" rx="1"/></svg></span></div>
+
+      <main class="screens">
+        <section id="screen-role" class="screen active intro-screen">
+          <div class="intro-visual" aria-hidden="true"><span class="intro-route-label">운송 현장 지식 서비스</span><div class="intro-truck"><svg viewBox="0 0 92 58" role="img"><path d="M8 11h49v31H8z" fill="#08213a"/><path d="M57 22h16l11 12v8H57z" fill="#1178c9"/><path d="M64 26h7l7 8H64z" fill="#eaf5ff"/><rect x="3" y="39" width="84" height="5" rx="2.5" fill="#10a889"/><circle cx="23" cy="45" r="8" fill="#172330"/><circle cx="23" cy="45" r="3" fill="#fff"/><circle cx="69" cy="45" r="8" fill="#172330"/><circle cx="69" cy="45" r="3" fill="#fff"/></svg></div><span class="intro-route-dot"></span></div>
+          <div class="intro-copy"><small>현장의 판단을 기록하고 연결합니다</small><h1>길새김</h1><p>당신의 경험이 운송 현장 암묵지의<br>디지털 자산이 됩니다.</p></div>
+          <div class="role-intro"><b>어떤 역할로 시작할까요?</b><span>역할에 맞는 운행과 현장지식 화면을 제공합니다.</span></div>
+          <div class="role-cards">
+            <button data-role-start="manager"><i class="role-icon manager-icon" aria-hidden="true"><svg><use href="#icon-hardhat"></use></svg></i><div><small>01 · 현장 운영</small><b>현장관리자</b><span>배차 현황 확인과 현장 안전 관리</span></div><em>›</em></button>
+            <button data-role-start="driver"><i class="role-icon blue" aria-hidden="true"><svg><use href="#icon-truck"></use></svg></i><div><small>02 · 운행 시작</small><b>운송자</b><span>운행 안내 확인과 현장 제보</span></div><em>›</em></button>
+          </div>
+        </section>
+
+        <section id="screen-yard" class="screen">
+          <header class="app-header"><button data-back="role">‹</button><h2>하역장 선택</h2><span></span></header>
+          <div class="screen-body yard-body">
+            <label class="search"><span>⌕</span><input placeholder="하역장 번호 또는 구역 검색"></label>
+            <div class="filter-row"><button class="active">전체</button><button>A 구역</button><button>B 구역</button><button>C 구역</button></div>
+            <div class="yard-list">
+              <button class="yard-card selected" data-yard="A"><div><b>A하역장</b><span>입구에서 150m</span><small>대형 트럭 전용</small></div><em class="open">사용 가능</em></button>
+              <button class="yard-card" data-yard="B"><div><b>B하역장</b><span>입구에서 280m</span><small>냉동·냉장 차량 전용</small></div><em class="open">사용 가능</em></button>
+              <button class="yard-card" data-yard="C"><div><b>C하역장</b><span>입구에서 500m</span><small>소형 차량 전용</small></div><em class="open">사용 가능</em></button>
+            </div>
+          </div>
+          <div class="sticky-action"><button id="confirm-yard" class="primary-button">선택 완료&nbsp; →</button></div>
+        </section>
+
+        <section id="screen-home" class="screen">
+          <header class="app-header home-header"><div><b>길새김</b></div><button class="round-button" data-screen-link="role">⋯</button></header>
+          <div class="screen-body home-body">
+            <article class="shipment-card">
+              <div class="shipment-top"><div class="shipment-label"><i aria-hidden="true">↗</i><span>이번 배차</span></div><em>운행 준비</em></div>
+              <div class="route-row"><i class="pin mint-pin"></i><div><small>출발지</small><b>인천 물류센터 A동</b><span>인천광역시 중구 서해대로 123</span></div></div>
+              <div class="route-line"></div>
+              <div class="route-row"><i class="pin red-pin"></i><div><small>도착지</small><b>서울 동부 물류센터 B동</b><span>서울특별시 성동구 물류단지로 45</span></div></div>
+              <div class="arrival-row"><span id="home-yard-eta-label">A하역장 도착 예정</span><b id="home-yard-eta">14:00</b></div>
+            </article>
+            <article class="service-principle"><small class="principle-label">현장 경험 제보</small><b>운송자의 판단을 기록하세요.</b><span>현장의 신호와 대응 기준이<br>다음 운행에 필요한 현장지식이 됩니다.</span></article>
+            <article id="senior-call-prompt" class="senior-call-home hidden" aria-live="polite">
+              <div class="senior-call-home-head"><div class="senior-ai-brand"><i aria-hidden="true">AI</i><div><span>길새김AI 브리핑</span><small>검증된 현장지식 안내</small></div></div></div>
+              <h3>A게이트 혼잡 시<br>B게이트 경로를 추천합니다</h3>
+              <p id="senior-call-context" class="senior-call-context">검증된 현장지식을 바탕으로 AI가 경로를 자동 추천합니다.</p>
+            </article>
+            <button id="start-driving" class="primary-button dark demo-action" data-demo-label="시연">운행 시작</button>
+          </div>
+          <nav class="bottom-nav" aria-label="주요 메뉴"><button class="active" data-screen-link="drive"><i aria-hidden="true"><svg><use href="#icon-route"></use></svg></i><span>운행</span></button><button data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-knowledge"></use></svg></i><span>현장지식</span></button><button data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>제보</span></button></nav>
+        </section>
+
+        <section id="screen-drive" class="screen">
+          <header class="app-header overlay-header"><button data-back="home">‹</button><h2>운행 안내</h2><span class="live-chip">운행 중</span></header>
+          <div id="drive-map-area" class="map-area">
+            <svg id="mobile-map" viewBox="0 0 390 570" aria-label="게이트 A부터 D, 하역장과 실제 이동 경로를 함께 보여주는 현장 진입 지도">
+              <defs>
+                <pattern id="yard-grid" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 0H14M0 0V14"/></pattern>
+                <pattern id="parking-bays" width="20" height="16" patternUnits="userSpaceOnUse"><path d="M2 1V15"/></pattern>
+              </defs>
+              <rect class="map-canvas" width="390" height="570"/>
+              <g class="map-context" aria-hidden="true">
+                <path class="map-green" d="M0 0H136L122 132L0 160Z"/>
+                <path class="map-green light" d="M268 0H390V178L360 163L332 104Z"/>
+                <path class="map-green strip" d="M0 414C56 397 115 405 146 428L126 476C72 459 28 461 0 473Z"/>
+                <path class="map-water" d="M0 501C68 483 138 493 197 524S319 560 390 539V570H0Z"/>
+                <rect class="map-yard" x="20" y="164" width="142" height="161" rx="12"/>
+                <rect class="map-yard-grid" x="27" y="171" width="128" height="147" rx="9"/>
+                <rect class="map-building" x="30" y="182" width="96" height="39" rx="5"/>
+                <rect class="map-building" x="44" y="245" width="75" height="55" rx="6"/>
+                <rect class="map-building" x="29" y="349" width="94" height="52" rx="8"/>
+                <rect class="map-building" x="247" y="105" width="111" height="62" rx="8"/>
+                <rect class="map-building" x="284" y="294" width="76" height="56" rx="8"/>
+                <rect class="map-building small" x="187" y="176" width="49" height="35" rx="5"/>
+                <rect class="map-parking" x="131" y="238" width="20" height="71" rx="3"/>
+                <text class="map-place" x="22" y="35">서울 동부 물류단지</text>
+                <text class="map-subplace" x="38" y="150">물류동 · 대기장</text>
+                <text class="map-building-label" x="78" y="205" text-anchor="middle">상온 보관동</text>
+                <text class="map-building-label" x="82" y="275" text-anchor="middle">냉장 보관동</text>
+                <text class="map-building-label" x="76" y="380" text-anchor="middle">운영 사무동</text>
+                <text class="map-building-label" x="302" y="138" text-anchor="middle">하역 도크</text>
+              </g>
+              <g class="map-roads" aria-hidden="true">
+                <path class="road-outline major" d="M-20 555C63 539 119 509 188 476C214 466 243 455 272 444C289 435 303 425 316 414C350 391 366 360 361 326C357 285 343 238 325 202C317 186 309 174 302 167"/>
+                <path class="road-surface major" d="M-20 555C63 539 119 509 188 476C214 466 243 455 272 444C289 435 303 425 316 414C350 391 366 360 361 326C357 285 343 238 325 202C317 186 309 174 302 167"/>
+                <path class="road-divider" d="M-20 555C63 539 119 509 188 476C214 466 243 455 272 444C289 435 303 425 316 414C350 391 366 360 361 326C357 285 343 238 325 202C317 186 309 174 302 167"/>
+                <path class="road-outline access" d="M188 476C186 428 194 382 215 345C237 306 259 281 283 254C300 235 308 215 307 198C307 184 305 175 302 167"/>
+                <path class="road-surface access" d="M188 476C186 428 194 382 215 345C237 306 259 281 283 254C300 235 308 215 307 198C307 184 305 175 302 167"/>
+                <path class="road-outline access" d="M215 345C196 319 177 295 173 267C169 239 177 212 199 194C221 175 238 156 244 131"/>
+                <path class="road-surface access" d="M215 345C196 319 177 295 173 267C169 239 177 212 199 194C221 175 238 156 244 131"/>
+                <path class="road-outline minor" d="M-20 113C51 105 114 102 166 114C201 121 218 128 244 131C278 135 318 121 408 83"/>
+                <path class="road-surface minor" d="M-20 113C51 105 114 102 166 114C201 121 218 128 244 131C278 135 318 121 408 83"/>
+                <path class="road-outline minor" d="M52 542C76 490 93 442 106 389C119 339 136 292 173 267"/>
+                <path class="road-surface minor" d="M52 542C76 490 93 442 106 389C119 339 136 292 173 267"/>
+                <path class="road-lane access" d="M215 345C196 319 177 295 173 267C169 239 177 212 199 194C221 175 238 156 244 131"/>
+                <path class="road-lane access" d="M188 476C186 428 194 382 215 345C237 306 259 281 283 254C300 235 308 215 307 198C307 184 305 175 302 167"/>
+              </g>
+              <g class="map-labels" aria-hidden="true">
+                <text class="road-label" x="71" y="510" transform="rotate(-19 71 510)">동부 물류 진입로</text>
+                <text class="road-label access-label" x="198" y="366" transform="rotate(-61 198 366)">게이트 순환로</text>
+              </g>
+              <path class="route-halo" d="M42 530C91 511 140 492 188 476C214 466 243 455 272 444C289 435 303 425 316 414C350 391 366 360 361 326C357 285 343 238 325 202C317 186 309 174 302 167" fill="none"/>
+              <path id="mobile-planned-path" d="M42 530C91 511 140 492 188 476C214 466 243 455 272 444C289 435 303 425 316 414C350 391 366 360 361 326C357 285 343 238 325 202C317 186 309 174 302 167" fill="none"/>
+              <path id="mobile-actual-path" d="M188 476C186 428 194 382 215 345C237 306 259 281 283 254" fill="none" pathLength="100" stroke-dasharray="0 100" opacity="0"/>
+              <path id="mobile-guidance-path" d="M283 254C300 235 308 215 307 198C307 184 305 175 302 167" fill="none" pathLength="100" stroke-dasharray="0 100" opacity="0"/>
+              <g id="risk-zone" opacity="0"><circle cx="188" cy="476" r="43"/><circle class="risk-ring" cx="188" cy="476" r="28"/></g>
+              <g class="map-facility" transform="translate(273 385)"><rect width="82" height="36" rx="7"/><circle cx="13" cy="13" r="3.5"/><text x="23" y="17" text-anchor="start">A게이트</text><text id="mobile-gate-state" x="13" y="29" text-anchor="start">운영 중</text></g>
+              <g id="mobile-b-gate" class="map-facility alt" transform="translate(241 218)"><rect width="84" height="36" rx="7"/><circle cx="13" cy="13" r="3.5"/><text x="23" y="17" text-anchor="start">B게이트</text><text x="13" y="29" text-anchor="start">운영 중</text></g>
+              <g class="map-facility alt" transform="translate(157 176)"><rect width="78" height="34" rx="7"/><circle cx="13" cy="13" r="3.5"/><text x="23" y="17" text-anchor="start">C게이트</text><text x="13" y="28" text-anchor="start">운영 중</text></g>
+              <g class="map-facility alt" transform="translate(124 96)"><rect width="78" height="34" rx="7"/><circle cx="13" cy="13" r="3.5"/><text x="23" y="17" text-anchor="start">D게이트</text><text x="13" y="28" text-anchor="start">운영 중</text></g>
+              <g class="dock-destination" transform="translate(302 167)"><circle class="dock-pulse" r="25"/><circle class="dock-pin" r="15"/><path class="dock-symbol" d="M-5-5h10v10H-5zM-2-9v4m4-4v4M-9 8h18"/><g class="dock-callout" transform="translate(-58 -48)"><rect width="126" height="39" rx="8"/><text id="dock-destination-name" x="12" y="16">A하역장 도착 예정</text><text id="dock-destination-eta" x="12" y="29">14:00</text></g></g>
+              <g id="tacit-report-alert" aria-label="암묵지 후보 저장 · 현장지식 검증 대기">
+                <circle class="tacit-alert-ring" cx="332" cy="274" r="19"/>
+                <circle class="tacit-alert-pin" cx="332" cy="274" r="11"/>
+                <path class="tacit-alert-mark" d="M332 267v8m0 4v.1"/>
+                <g class="tacit-alert-label" transform="translate(212 286)"><rect width="142" height="34" rx="7"/><text id="tacit-alert-title" x="10" y="14">암묵지 후보 저장</text><text id="tacit-alert-detail" x="10" y="26">현장지식 검증 대기</text></g>
+              </g>
+              <g id="mobile-truck" transform="translate(42 530)"><circle r="22" fill="#fff" stroke="#167bd2" stroke-width="3"/><path d="M0-14L10 11L0 7L-10 11Z" fill="#167bd2"/></g>
+            </svg>
+            <div class="speed-card"><b id="mobile-speed">42</b><span>km/h</span></div>
+            <article id="risk-card" class="risk-card collapsed">
+              <div class="risk-card-head"><div><i id="route-alert-icon" aria-hidden="true">↗</i><span><b>AI 경로 안내</b><small id="pipeline-source">실시간 경로를 준비하고 있습니다</small></span></div></div>
+              <section class="integrated-navigation" aria-live="polite"><div class="integrated-guidance"><i id="turn-icon" aria-hidden="true">↑</i><div><small id="next-distance">620m 앞</small><strong id="field-guide-title">A게이트 통과 후 A하역장</strong><span id="field-guide-detail">동부센터 진입로</span></div></div><div class="integrated-route-meta"><span id="mobile-eta-label">A하역장 도착 예정</span><b id="mobile-eta">14:00</b><em id="eta-status">정시</em></div></section>
+              <section id="route-reason" class="route-reason" aria-live="polite">
+                <span id="route-reason-label" class="route-reason-label">추천 경로</span>
+                <strong id="route-reason-title">B게이트로 우회하세요</strong>
+                <p id="route-reason-detail">A게이트 혼잡 구간을 피해 안내합니다.</p>
+              </section>
+              <button id="play-event" class="demo-action" data-demo-label="시연">경로 안내 시작</button>
+            </article>
+            <article id="trip-summary" class="trip-summary hidden" aria-live="polite">
+              <span>운행 완료</span><h3>전체 이동 경로가 기록되었습니다</h3>
+              <div><b>1.8&nbsp;km</b><small id="trip-summary-route">GPS 이동 기록 · B게이트 → A하역장</small></div>
+              <a href="https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%20%EB%8F%99%EB%B6%80%20%EB%AC%BC%EB%A5%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 보기</a>
+            </article>
+          </div>
+          <nav class="bottom-nav" aria-label="주요 메뉴"><button class="active" data-screen-link="drive"><i aria-hidden="true"><svg><use href="#icon-route"></use></svg></i><span>운행</span></button><button data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-knowledge"></use></svg></i><span>현장지식</span></button><button data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>제보</span></button></nav>
+        </section>
+
+        <section id="screen-ai" class="screen">
+          <header class="app-header"><button data-back="drive">‹</button><h2>운행 확인</h2><span></span></header>
+          <div class="screen-body ai-body">
+            <div class="safe-banner"><i>✓</i><span><b>차량이 안전하게 정차되었습니다</b></span></div>
+            <article class="ai-summary-card"><span>정차 후 운행 확인</span><h3>B게이트 방향으로 이동한 이유가 있나요?</h3><p>관찰한 신호와 조치만 간단히 남겨주세요.</p></article>
+            <div class="voice-capture"><button id="voice-button">●</button><p id="voice-guide">마이크를 눌러 음성으로 답변하거나<br>아래 버튼을 선택하세요.</p></div>
+            <div class="quick-answer-row"><button data-quick-answer="차량 간격 증가">차량 간격</button><button data-quick-answer="도크 준비 표시 지연">도크 표시</button><button data-quick-answer="현장 직원 수신호">직원 신호</button></div>
+            <textarea id="mobile-answer" placeholder="답변 내용">A게이트 차량 간격이 길어지고 도크 준비 표시가 계속 안 바뀌어서 B게이트로 갔어요.</textarea>
+            <button id="confirm-answer" class="primary-button dark">확인 완료 · 운행 계속&nbsp; ▶</button>
+            <button class="text-button" data-screen-link="drive">나중에 답하기</button>
+          </div>
+          <nav class="bottom-nav" aria-label="주요 메뉴"><button data-screen-link="drive"><i aria-hidden="true"><svg><use href="#icon-route"></use></svg></i><span>운행</span></button><button class="active" data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-knowledge"></use></svg></i><span>현장지식</span></button><button data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>제보</span></button></nav>
+        </section>
+
+        <section id="screen-library" class="screen">
+          <header class="app-header"><button data-back="home">‹</button><h2>현장지식</h2><span></span></header>
+          <div class="screen-body library-body">
+            <section class="knowledge-library-hero">
+              <small>현장 암묵지 디지털 아카이브</small>
+              <h3>운송 현장 경험을 확인해보세요.</h3>
+              <p>현장에서 반복 검증된 신호와 판단기준을 찾아<br>다음 운행에 활용할 수 있습니다.</p>
+              <div><span><b>24</b> 검증 지식</span><span><b>5</b>개 카테고리</span></div>
+            </section>
+            <label class="search knowledge-search"><span>⌕</span><input id="knowledge-search" placeholder="제목·조건·현장 신호 검색"></label>
+            <div class="filter-row knowledge-category-row" aria-label="현장지식 카테고리">
+              <button class="active" data-category-filter="all">전체</button><button data-category-filter="weather">날씨</button><button data-category-filter="gate">게이트</button><button data-category-filter="unloading">하역</button><button data-category-filter="safety">안전</button><button data-category-filter="route">경로</button>
+            </div>
+            <div class="knowledge-shelf-head"><div><small>암묵지 디지털 자산</small><h3 id="knowledge-shelf-title">전체 현장지식</h3></div><span id="knowledge-result-count">5개</span></div>
+            <article id="approved-card" class="knowledge-card-mobile library-asset-card featured" data-knowledge-category="gate">
+              <header class="asset-card-head"><span class="asset-category">게이트</span><em id="approved-status">검증된 현장지식</em><time id="approved-date">2026.08.05</time></header>
+              <h3 id="approved-title">A게이트 혼잡 시 B게이트 운영 여부 확인</h3><p id="approved-description">차량 간격과 도크 준비 표시가 함께 지연되면 B게이트 운영 여부를 먼저 확인합니다.</p><div id="approved-tags"><span>#A게이트</span><span>#냉장5톤</span><span>#저녁시간</span></div><small id="approved-condition">적용: 같은 게이트·차량 조건 · 30일 후 재검토</small>
+            </article>
+            <article id="candidate-card" class="knowledge-card-mobile library-asset-card candidate hidden" data-knowledge-category="gate">
+              <header class="asset-card-head"><span class="asset-category">게이트</span><em id="candidate-status">현장지식 후보 · 검증 대기</em><time id="candidate-date">방금 전</time></header>
+              <h3 id="candidate-title">운송자 현장 판단</h3><p id="candidate-description">위치·시간·현장 상황·판단 기준이 함께 저장되었습니다.</p><div id="candidate-tags"><span>#암묵지</span><span>#운송자기록</span></div><small id="candidate-condition">관리자 검증 후 조건에 맞는 다음 운행에 제공됩니다.</small>
+            </article>
+            <article class="knowledge-card-mobile library-asset-card weather-card" data-knowledge-category="weather">
+              <header class="asset-card-head"><span class="asset-category">날씨</span><em>현장확인 완료</em><time>2026.07.24</time></header>
+              <h3>폭우 시 C센터 적재장 진입 기준</h3><p>배수로 물이 노란 표시선을 넘으면 적재장으로 바로 진입하지 않고, 지붕 대기구역의 빈 공간을 먼저 확인합니다.</p><div><span>#폭우</span><span>#배수로</span><span>#적재대기</span></div><small>적용: 강수량 20mm 이상 · C센터 · 대형 화물차</small>
+            </article>
+            <article class="knowledge-card-mobile library-asset-card unloading-card" data-knowledge-category="unloading">
+              <header class="asset-card-head"><span class="asset-category">하역</span><em>검증 완료</em><time>2026.07.18</time></header>
+              <h3>B동 도크 호출 전 대기 위치</h3><p>호출등이 두 번 점멸하기 전에는 도크로 붙지 않고, B1 대기선 안쪽에서 후진 공간을 비워둡니다.</p><div><span>#B동</span><span>#도크호출</span><span>#대기선</span></div><small>적용: B동 1~4번 도크 · 냉동·냉장 차량</small>
+            </article>
+            <article class="knowledge-card-mobile library-asset-card safety-card" data-knowledge-category="safety">
+              <header class="asset-card-head"><span class="asset-category">안전</span><em>안전 검증</em><time>2026.07.11</time></header>
+              <h3>야간 도크 후진 시 유도원 확인 기준</h3><p>왼쪽 미러에서 유도원의 형광 조끼가 보이지 않으면 즉시 정차하고, 수신호가 다시 확인된 뒤 후진합니다.</p><div><span>#야간</span><span>#후진</span><span>#유도원</span></div><small>적용: 조도 낮음 · 도크 후진 · 유도원 배치 현장</small>
+            </article>
+            <article class="knowledge-card-mobile library-asset-card route-card" data-knowledge-category="route">
+              <header class="asset-card-head"><span class="asset-category">경로</span><em>최근 검증</em><time>2026.07.03</time></header>
+              <h3>서부 진입로 공사 구간 합류 기준</h3><p>노란 차로 도색이 끊기는 지점보다 먼저 2차로로 진입해야 회전 차량과의 교차를 피할 수 있습니다.</p><div><span>#공사구간</span><span>#차로합류</span><span>#서부진입로</span></div><small>적용: 평일 09:00~18:00 · 공사 종료 시 재검토</small>
+            </article>
+          </div>
+          <nav class="bottom-nav" aria-label="주요 메뉴"><button data-screen-link="drive"><i aria-hidden="true"><svg><use href="#icon-route"></use></svg></i><span>운행</span></button><button class="active" data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-knowledge"></use></svg></i><span>현장지식</span></button><button data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>제보</span></button></nav>
+        </section>
+
+        <section id="screen-report" class="screen">
+          <header class="app-header"><button data-back="drive">‹</button><h2>현장 제보</h2><span></span></header>
+          <div class="screen-body report-body">
+            <div id="report-form-content">
+            <p class="report-intro"><b>운송자의 판단을 기록하세요.</b><span>현장의 신호와 대응 기준이<br>다음 운행에 필요한 현장지식이 됩니다.</span></p>
+            <div class="report-types"><button class="report-type" data-report-type="current">현장 상황</button><button class="report-type active" data-report-type="knowledge">암묵지 기록</button><button class="report-type" data-report-type="near-miss">사고</button></div>
+            <label class="field-label report-facts">현장 상황 기록<textarea id="report-text" placeholder="현장 상황을 사실 중심으로 설명해주세요.">A게이트 도크 신호가 계속 적색이고 대기 차량이 늘었습니다. 현장 안내원의 수신호에 따라 B게이트가 비어 있는 것을 확인해 이동했습니다.</textarea></label>
+            <label class="field-label tacit-field">운송자의 판단 기준 <small>무엇을 보고, 어떻게 판단했는지 남겨주세요.<br>당신의 기록이 암묵지의 핵심입니다.</small><textarea id="report-tacit-text" placeholder="예: 도크 신호가 2분 이상 적색이면 B게이트 운영 여부부터 확인합니다.">교대시간에는 A게이트 도크 신호가 멈춘 뒤 차량 간격이 길어집니다. 이때는 B게이트 운영 여부를 먼저 확인하는 판단 기준입니다.</textarea></label>
+            <div class="auto-info"><div><span>위치</span><b id="report-location">서울 동부 물류센터 A게이트 · GPS 자동</b></div><div><span>시간</span><b id="report-time">방금 전</b></div><div><span>저장 상태</span><b>현장지식 후보 · 검증 전</b></div></div>
+            <div class="attach-buttons"><button id="photo-attach" class="evidence-action">사진 추가</button><button id="voice-record" class="evidence-action">음성 메모</button></div>
+            <input id="photo-input" class="hidden" type="file" accept="image/*" capture="environment">
+            <button id="load-media-demo" class="sample-media-button demo-action" data-demo-label="시연">예시 사진·음성 첨부</button>
+            <div id="media-preview-grid" class="media-preview-grid hidden" aria-live="polite">
+              <article id="photo-preview" class="media-preview-card hidden"><div class="media-preview-head"><b>현장 사진</b><em id="photo-status">1장 첨부</em></div><img id="photo-preview-image" alt="첨부한 현장 사진 미리보기"><p id="photo-caption">실제 촬영 사진 · 관리자 확인 전</p><small id="photo-credit" class="photo-credit">사진 출처가 여기에 표시됩니다.</small><button id="photo-remove">사진 삭제</button></article>
+              <article id="voice-preview" class="media-preview-card hidden"><div class="media-preview-head"><b>음성 메모</b><em id="voice-duration">00:00</em></div><div id="voice-wave" class="voice-wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p id="voice-status">녹음 대기</p><blockquote id="voice-transcript">음성 내용이 여기에 표시됩니다.</blockquote><audio id="voice-audio" class="hidden" controls></audio><div class="voice-actions"><button id="voice-play">▶ 재생</button><button id="voice-remove">삭제</button></div></article>
+            </div>
+            <article id="report-draft" class="report-draft hidden"><span>현장지식 후보 AI 정리</span><dl id="report-summary-fields" class="report-summary-fields"></dl><small>AI가 항목별로 정리한 기록을 확인한 뒤 후보로 등록하세요.</small></article>
+            <button id="summarize-report" class="secondary-button ai-organize-button">AI로 정리</button>
+            <button id="submit-report" class="primary-button" disabled>현장지식 후보 등록</button>
+            <p class="emergency-note">긴급 신고와 현장 비상 절차를 대체하지 않습니다.</p>
+            </div>
+            <article id="asset-result" class="asset-result hidden" aria-live="polite"><span>현장지식 후보 저장</span><h3>운송자의 판단이 다음 운행을 위한 디지털 자산으로 저장되었습니다.</h3><dl><div><dt>함께 저장</dt><dd>GPS 위치 · 기록 시각 · 현장 상황 · 판단 기준 · 첨부 근거</dd></div><div><dt>다음 단계</dt><dd>관리자 검증 후 조건이 맞는 운송자에게 현장지식으로 제공</dd></div></dl><button id="continue-driving" class="primary-button dark">운행 계속하기&nbsp; →</button><div class="asset-result-links"><button id="view-candidate" class="text-button">현장지식 후보 보기</button><button id="open-manager-review" class="text-button">관리자 승인 보기</button></div></article>
+          </div>
+          <nav class="bottom-nav" aria-label="주요 메뉴"><button data-screen-link="drive"><i aria-hidden="true"><svg><use href="#icon-route"></use></svg></i><span>운행</span></button><button data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-knowledge"></use></svg></i><span>현장지식</span></button><button class="active" data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>제보</span></button></nav>
+        </section>
+
+        <section id="screen-manager" class="screen">
+          <header class="app-header"><button data-back="role">‹</button><h2>현장지식 검증</h2><span class="live-chip">검증 중</span></header>
+          <div class="screen-body manager-body">
+            <div class="manager-kpis"><div><span>운송 중</span><b>12</b></div><div><span>확인 대기</span><b id="pending-mobile">0</b></div><div><span>시설 대기</span><b>3</b></div></div>
+            <article class="backend-card"><div><i id="backend-dot"></i><span><b>현장 데이터 연결</b><small id="backend-text">연결 확인 중</small></span></div><em>8개 구역 · 시설 정보</em></article>
+            <article id="manager-empty" class="manager-empty"><span>✓</span><b>새 확인 요청이 없습니다.</b><p>운송자 답변이나 현장 제보가 들어오면 표시됩니다.</p></article>
+            <article id="manager-review-card" class="manager-review-card hidden"><div class="manager-review-top"><span>확인 후보</span><em>42초 먼저 관찰</em></div><h3>A게이트 교대시간 사전 징후</h3><div class="evidence-timeline-mobile"><p><time>17:04:36</time>B게이트 방향 전환</p><p><time>17:05:18</time>A게이트 혼잡 경고</p></div><blockquote id="manager-quote">“A게이트 차량 간격이 길어지고 도크 준비 표시가 계속 안 바뀌어서 B게이트로 갔어요.”</blockquote><article id="manager-tacit-note" class="manager-tacit-note"><b>암묵지 제보 내용</b><p>교대시간에는 B게이트 운영 여부를 먼저 확인합니다.</p></article><div id="manager-media-evidence" class="manager-media-evidence hidden"><img id="manager-media-image" alt="현장 제보 사진"><div><b>첨부 근거</b><span id="manager-media-meta">사진 1장 · 음성 메모</span><p id="manager-media-transcript"></p></div></div><label>조건<input value="평일 16:30~18:00 · 냉장 5톤"></label><label>예외<input value="위험물 차량 제외"></label><label>유효기간<select><option>오늘까지</option><option selected>30일 후 재검토</option><option>현장지식 등록</option></select></label><div class="manager-actions"><button id="reject-card">기각</button><button id="edit-card">조건 수정</button><button id="approve-card">✓ 승인</button></div></article>
+            <article class="repeat-rule"><div><b>암묵지 제보 검증 원칙</b><small>제보와 현장지식 제공 분리</small></div><p>현장 제보에는 상황과 암묵지를 함께 기록합니다. 기존 운행 데이터 분석과 관리자 검증을 거쳐 정리한 현장지식만 다음 운행에 제공합니다.</p><div><span id="warn-1"></span><span id="warn-2"></span><span id="warn-3"></span><b id="warn-count">준비</b></div><button id="add-warning">검증 기준 보기</button></article>
+          </div>
+          <nav class="bottom-nav manager-nav" aria-label="관리자 메뉴"><button class="active" data-screen-link="manager"><i aria-hidden="true"><svg><use href="#icon-dashboard"></use></svg></i><span>관제</span></button><button data-screen-link="library"><i aria-hidden="true"><svg><use href="#icon-approved"></use></svg></i><span>현장지식</span></button><button data-screen-link="report"><i aria-hidden="true"><svg><use href="#icon-report"></use></svg></i><span>정보등록</span></button></nav>
+        </section>
+      </main>
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/data.js?v=20260810-stable-1"></script><script src="js/ai-engine.js?v=20260810-stable-1"></script><script src="js/app.js?v=20260810-stable-1"></script>
+</body>
+</html>
+
+
+
+
+
+

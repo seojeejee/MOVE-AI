@@ -1,0 +1,34 @@
+/* Semantic color system: color indicates the kind of operational information. */
+:root{
+  --semantic-route:#176e99;
+  --semantic-route-soft:#e8f4fa;
+  --semantic-knowledge:#16745f;
+  --semantic-knowledge-soft:#e7f5ef;
+  --semantic-judgement:#a5661f;
+  --semantic-judgement-soft:#fcf2e5;
+  --semantic-safety:#b84f4b;
+  --semantic-safety-soft:#fbeceb;
+  --semantic-ai:#6d56a1;
+  --semantic-ai-soft:#f0edfa;
+}
+
+/* Blue — 운행·GPS·배차 */
+.shipment-card{border-top-color:var(--semantic-route)}.shipment-top{background:var(--semantic-route-soft)}.shipment-top span{color:#215a72}.shipment-top span:before{background:#cbe6f2;color:var(--semantic-route)}.arrival-row{border-color:#cbe0e9;background:#f0f7fa}.service-principle{border-color:#b9d8e5;border-left-color:var(--semantic-route);background:#fbfdfe}.service-principle:before{color:var(--semantic-route)}.route-row:first-of-type .pin{background:var(--semantic-route)}.primary-button{background:var(--semantic-route)}.primary-button:hover{background:#115a7e}.bottom-nav button.active{color:var(--semantic-route)}.bottom-nav button.active i{background:var(--semantic-route-soft)}.greeting:after{background:var(--semantic-route)}
+
+/* Green — 검증된 현장지식·다음 운행 적용 */
+.senior-call-home{border-color:#9fcebE;border-top-color:var(--semantic-knowledge);background:linear-gradient(180deg,#fbfefd 0%,#f5fbf8 100%)}.senior-ai-brand i{background:var(--semantic-knowledge-soft);color:var(--semantic-knowledge)}.senior-ai-brand span{color:#216652}.senior-call-home-head em{background:#dff1e9;color:var(--semantic-knowledge)}.senior-call-highlight{border-color:#c9e3d9;border-left-color:var(--semantic-knowledge);background:#f0f8f4}.senior-call-highlight small,.senior-call-highlight strong{color:#276354}.knowledge-card-mobile.featured{border-left-color:var(--semantic-knowledge);background:#fcfffd}.knowledge-card-mobile.featured em,.knowledge-card-mobile.candidate.featured em{background:var(--semantic-knowledge-soft);color:var(--semantic-knowledge)}.knowledge-card-mobile.candidate.featured{border-left-color:var(--semantic-knowledge)}.asset-result{border-color:#9bcebE;border-top-color:var(--semantic-knowledge)}.asset-result>span{background:var(--semantic-knowledge-soft);color:var(--semantic-knowledge)}.asset-result dt{color:var(--semantic-knowledge)}
+
+/* Teal/blue — existing knowledge and its data basis */
+.library-intro{border-left-color:#207990;background:#e9f4f7;color:#315f70}.knowledge-research-card{border-color:#a9cfdb;background:linear-gradient(180deg,#fbfeff 0%,#f4fafc 100%)}.knowledge-research-card:before{color:#d9edf3}.knowledge-research-top span{color:#20718a}.knowledge-research-top em{background:#deeff4;color:#357087}.knowledge-research-card dl{border-color:#cadfe6}.knowledge-research-card dl>div:first-child{background:#edf7fa}.knowledge-research-card dt{color:#25728a}.knowledge-card-mobile:not(.featured):not(.candidate):nth-of-type(4){border-left:4px solid #6386a4;background:#fbfdff}.knowledge-card-mobile:not(.featured):not(.candidate):nth-of-type(5){border-left:4px solid #2d8a78;background:#fbfefd}
+
+/* Amber — the driver's judgement, candidate status, and verification awaiting a decision. */
+.tacit-field{border-color:#e1bc7f;background:var(--semantic-judgement-soft)}.tacit-field:before{background:#f6dfbd;color:var(--semantic-judgement)}.tacit-field>small{color:#805a28}.tacit-field textarea{border-color:#dfc28e!important}.knowledge-card-mobile.candidate{border-color:#e2c18c;border-left-color:var(--semantic-judgement);background:#fffaf3}.knowledge-card-mobile.candidate em{background:#f9e7c9;color:#98601b}.knowledge-card-mobile.candidate small{color:#7c642e}.manager-review-card{border-color:#dfbd7d;border-top-color:var(--semantic-judgement)}.manager-review-top span{background:#f8e8cc;color:#93601d}.manager-review-top em{color:#8f672b}.live-chip{background:#fff1da;color:#95611d}
+
+/* Purple — AI converts raw records into structured knowledge fields. */
+.secondary-button{border-color:#b5a8d7;background:#fbfaff;color:var(--semantic-ai)}.secondary-button:before{color:var(--semantic-ai)}.report-draft{border-color:#c9bfE5;border-top-color:var(--semantic-ai);background:#fbfaff}.report-draft>span{background:var(--semantic-ai-soft);color:var(--semantic-ai)}.report-summary-fields{border-color:#d9d1ed}.report-summary-fields>div{border-bottom-color:#e9e4f5}.report-summary-fields dt{color:var(--semantic-ai)}.report-summary-fields dd{color:#4f4a63}
+
+/* Red — safety incident / near-miss is visible immediately when selected. */
+.report-types button[data-report-type="current"]{color:var(--semantic-route)!important}.report-types button[data-report-type="knowledge"]{color:var(--semantic-judgement)!important}.report-types button[data-report-type="near-miss"]{color:var(--semantic-safety)!important}.report-types button[data-report-type="current"].active{background:var(--semantic-route-soft)!important;box-shadow:inset 0 0 0 1px #a8cede}.report-types button[data-report-type="knowledge"].active{background:var(--semantic-judgement-soft)!important;box-shadow:inset 0 0 0 1px #e1bd83}.report-types button[data-report-type="near-miss"].active{background:var(--semantic-safety-soft)!important;box-shadow:inset 0 0 0 1px #dfaaa7}.report-body .field-label:not(.tacit-field){padding:12px;border:1px solid #bdd7e2;border-left:4px solid var(--semantic-route);border-radius:9px;background:#f7fbfd}.report-body .field-label:not(.tacit-field) textarea{border-color:#bfd7e1}.emergency-note{color:var(--semantic-safety)!important}.attach-buttons button.recording{border-color:var(--semantic-safety);background:var(--semantic-safety-soft);color:var(--semantic-safety)}
+
+/* Map follows the same color language. */
+#drive-map-area .drive-banner{border-left-color:var(--semantic-route)!important}#drive-map-area .route-fab{border-top-color:var(--semantic-route)!important}#drive-map-area .speed-card b{color:var(--semantic-route)}#drive-map-area .risk-card{border-top-color:var(--semantic-route)!important}#drive-map-area .risk-card.triggered{border-top-color:var(--semantic-judgement)!important;background:#fffaf3!important}#drive-map-area .risk-card.complete{border-top-color:var(--semantic-knowledge)!important;background:#f7fdf9!important}.trip-summary{border-top-color:var(--semantic-route)!important}.map-tacit-knowledge rect{fill:#fff7e9;stroke:#d9a555}.map-tacit-knowledge circle{fill:var(--semantic-judgement)}

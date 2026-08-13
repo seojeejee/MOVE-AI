@@ -1,0 +1,37 @@
+/* Map layout: reserve distinct zones for status, navigation, and controls. */
+#drive-map-area{isolation:isolate}
+
+/* Top zone: the route instruction stays left; arrival and speed never share a card edge. */
+#drive-map-area .drive-banner{top:14px;left:16px;right:auto;z-index:10;width:auto;max-width:calc(100% - 132px);min-height:62px;padding:10px 12px}
+#drive-map-area .route-fab{top:14px;right:16px;z-index:11;width:88px;min-height:66px;padding:9px 7px}
+#drive-map-area .speed-card{top:94px;right:16px;z-index:11;min-height:30px;padding:6px 10px}
+#drive-map-area .map-place{display:none}
+
+/* The legend competed with the bottom guidance panel and is not needed during normal driving. */
+#drive-map-area .route-legend{display:none!important}
+
+/* Bottom zone: collapsed guidance is one compact row, not two overlapping rectangles. */
+#drive-map-area .risk-card{left:16px;right:16px;bottom:78px;z-index:12;max-width:none;border-radius:11px}
+#drive-map-area .risk-card.collapsed{display:grid;grid-template-columns:minmax(0,1fr) 136px;gap:10px;align-items:center;padding:10px 11px}
+#drive-map-area .risk-card.collapsed .risk-card-head{min-width:0}
+#drive-map-area .risk-card.collapsed .risk-card-head>div{min-width:0}
+#drive-map-area .risk-card.collapsed .risk-card-head small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#drive-map-area .risk-card.collapsed>button{width:136px;height:40px;min-height:40px;margin:0;border-radius:8px}
+#drive-map-area .risk-card.triggered,#drive-map-area .risk-card.complete{max-width:360px;padding:12px}
+#drive-map-area .risk-card.triggered>button,#drive-map-area .risk-card.complete>button{min-height:40px;height:40px}
+
+/* Completion receives the same dedicated bottom zone. */
+#drive-map-area .trip-summary{right:16px;bottom:78px;z-index:13;width:min(310px,calc(100% - 32px));padding:14px;border-radius:12px}
+#drive-map-area .trip-summary>div{display:grid;grid-template-columns:max-content minmax(0,1fr);align-items:center;gap:9px}
+#drive-map-area .trip-summary>div b{white-space:nowrap;word-break:keep-all}
+#drive-map-area .trip-summary>div small{min-width:0}
+
+@media(max-width:900px){
+  #drive-map-area .drive-banner{left:12px;top:12px;max-width:calc(100% - 116px);min-height:58px;padding:9px 10px}
+  #drive-map-area .route-fab{top:12px;right:12px;width:78px;min-height:60px;padding:8px 5px}
+  #drive-map-area .speed-card{top:84px;right:12px}
+  #drive-map-area .risk-card{left:12px;right:12px;bottom:76px}
+  #drive-map-area .risk-card.collapsed{grid-template-columns:minmax(0,1fr) 118px;gap:8px;padding:9px}
+  #drive-map-area .risk-card.collapsed>button{width:118px;height:38px;min-height:38px;font-size:12px}
+  #drive-map-area .trip-summary{right:12px;bottom:76px;width:min(296px,calc(100% - 24px))}
+}

@@ -1,0 +1,14 @@
+﻿{
+  "name": "MOVE AI · 길새김",
+  "short_name": "길새김",
+  "description": "현장 행동 후보를 검증된 물류 지식으로 전환하는 해커톤 프로토타입",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#08213a",
+  "lang": "ko-KR",
+  "icons": [
+    {"src": "truck-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

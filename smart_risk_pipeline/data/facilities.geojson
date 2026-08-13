@@ -1,0 +1,28 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "facility_id": "FAC_001",
+        "name": "Demo Logistics Center",
+        "type": "loading_zone",
+        "center_lat": 36.4365455,
+        "center_lng": 127.4102048,
+        "radius_m": 1000
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [127.407747, 36.435768],
+            [127.409078, 36.434629],
+            [127.412684, 36.437288],
+            [127.41131, 36.438497],
+            [127.407747, 36.435768]
+          ]
+        ]
+      }
+    }
+  ]
+}

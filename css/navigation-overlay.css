@@ -1,0 +1,715 @@
+/* One top navigation card, retaining the original AI route-guide visual system. */
+#drive-map-area #risk-card {
+  position: absolute !important;
+  top: 12px !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 12px !important;
+  z-index: 14 !important;
+  display: block !important;
+  width: min(252px, calc(100% - 126px)) !important;
+  max-width: 252px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #c9dce4 !important;
+  border-top: 4px solid var(--product-blue) !important;
+  border-left-width: 1px !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 9px 22px rgba(23, 60, 76, 0.16) !important;
+}
+
+#drive-map-area #risk-card.hidden {
+  display: none !important;
+}
+
+#drive-map-area #risk-card .risk-card-head {
+  display: block !important;
+  margin: 0 !important;
+  padding: 9px 10px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #e0e9ec !important;
+  background: #f4f8fa !important;
+}
+
+#drive-map-area #risk-card .risk-card-head > div {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+}
+
+#drive-map-area #risk-card .risk-card-head i {
+  display: grid !important;
+  flex: 0 0 26px !important;
+  width: 26px !important;
+  height: 26px !important;
+  place-items: center !important;
+  border-radius: 8px !important;
+  background: var(--product-blue) !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 950 !important;
+}
+
+#drive-map-area #risk-card .risk-card-head span {
+  min-width: 0 !important;
+}
+
+#drive-map-area #risk-card .risk-card-head b {
+  display: block !important;
+  color: #25434e !important;
+  font-size: 12.5px !important;
+  line-height: 1.25 !important;
+}
+
+#drive-map-area #risk-card #pipeline-source {
+  display: block !important;
+  margin-top: 1px !important;
+  overflow: hidden !important;
+  color: #6e8189 !important;
+  font-size: 9.5px !important;
+  line-height: 1.25 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card .integrated-navigation {
+  display: block !important;
+  margin: 0 !important;
+  padding: 8px 10px !important;
+  background: #ffffff !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance {
+  display: grid !important;
+  grid-template-columns: 20px minmax(0, 1fr) !important;
+  gap: 7px !important;
+  align-items: start !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance > i {
+  display: grid !important;
+  width: 20px !important;
+  height: 20px !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background: var(--product-blue-soft) !important;
+  color: var(--product-blue) !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  font-weight: 950 !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance > div {
+  min-width: 0 !important;
+}
+
+#drive-map-area #risk-card #next-distance,
+#drive-map-area #risk-card #field-guide-title,
+#drive-map-area #risk-card #field-guide-detail {
+  display: block !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card #next-distance {
+  color: #607681 !important;
+  font-size: 9px !important;
+  line-height: 1.15 !important;
+}
+
+#drive-map-area #risk-card #field-guide-title {
+  margin-top: 2px !important;
+  color: #203e49 !important;
+  font-size: 11.5px !important;
+  line-height: 1.3 !important;
+}
+
+#drive-map-area #risk-card #field-guide-detail {
+  margin-top: 1px !important;
+  color: #6a7e87 !important;
+  font-size: 9.5px !important;
+  line-height: 1.2 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  gap: 5px !important;
+  align-items: center !important;
+  margin-top: 7px !important;
+  padding-top: 6px !important;
+  border-top: 1px solid #e7edef !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta span {
+  overflow: hidden !important;
+  color: #627983 !important;
+  font-size: 9px !important;
+  line-height: 1.2 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta b {
+  color: var(--product-blue) !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta em {
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  background: var(--product-blue-soft) !important;
+  color: #39718e !important;
+  font-size: 8.5px !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card .route-reason {
+  display: none !important;
+  margin: 0 !important;
+  padding: 7px 10px !important;
+  border: 0 !important;
+  border-top: 1px solid #e5ecef !important;
+  border-radius: 0 !important;
+  background: #ffffff !important;
+}
+
+#drive-map-area #risk-card.triggered .route-reason,
+#drive-map-area #risk-card.complete .route-reason {
+  display: block !important;
+}
+
+#drive-map-area #risk-card .route-reason-label {
+  display: inline !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: #537483 !important;
+  font-size: 9px !important;
+  line-height: 1.2 !important;
+}
+
+#drive-map-area #risk-card .route-reason strong {
+  display: block !important;
+  margin-top: 2px !important;
+  overflow: hidden !important;
+  color: #203e49 !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#drive-map-area #risk-card .route-reason p {
+  display: none !important;
+}
+
+#drive-map-area #risk-card > #play-event.demo-action,
+#drive-map-area #risk-card.collapsed > #play-event.demo-action,
+#drive-map-area #risk-card.triggered > #play-event.demo-action,
+#drive-map-area #risk-card.complete > #play-event.demo-action {
+  width: calc(100% - 20px) !important;
+  min-height: 34px !important;
+  height: 34px !important;
+  margin: 0 10px 9px !important;
+  padding: 0 8px !important;
+  border-radius: 7px !important;
+  font-size: 11px !important;
+  line-height: 34px !important;
+}
+
+#drive-map-area #risk-card.triggered.alert {
+  border-color: #efc3c6 !important;
+  border-top-color: var(--product-red-deep) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head {
+  background: var(--product-red-soft) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head i {
+  background: var(--product-red-deep) !important;
+}
+
+#drive-map-area #risk-card.complete {
+  border-color: #bddfcf !important;
+  border-top-color: var(--product-green) !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head {
+  background: var(--product-green-soft) !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head i {
+  background: var(--product-green) !important;
+}
+
+@media (max-width: 420px) {
+  #drive-map-area #risk-card {
+    left: 10px !important;
+    width: min(234px, calc(100% - 116px)) !important;
+    max-width: 234px !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .phone-shell:has(#screen-drive.active) #drive-map-area #risk-card {
+    left: 18px !important;
+    width: 258px !important;
+    max-width: 258px !important;
+  }
+}
+
+/* Driver visibility pass: strong hierarchy without covering the route corridor. */
+#drive-map-area #risk-card {
+  border: 2px solid #1976b8 !important;
+  border-top-width: 5px !important;
+  box-shadow: 0 12px 28px rgba(13, 68, 105, 0.24), 0 0 0 3px rgba(255, 255, 255, 0.76) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head {
+  padding: 10px 11px !important;
+  border-bottom: 0 !important;
+  background: linear-gradient(135deg, #1178c9 0%, #0b5f9f 100%) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head i {
+  width: 30px !important;
+  height: 30px !important;
+  flex-basis: 30px !important;
+  border: 2px solid rgba(255, 255, 255, 0.86) !important;
+  background: rgba(255, 255, 255, 0.17) !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  box-shadow: 0 3px 8px rgba(6, 47, 78, 0.2) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head b {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.02em !important;
+}
+
+#drive-map-area #risk-card .risk-card-head b::after {
+  content: "GPS LIVE" !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 17px !important;
+  padding: 2px 5px !important;
+  border-radius: 99px !important;
+  background: #ffffff !important;
+  color: #0b67a9 !important;
+  font-size: 8px !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.04em !important;
+}
+
+#drive-map-area #risk-card #pipeline-source {
+  margin-top: 3px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 10.5px !important;
+  font-weight: 750 !important;
+}
+
+#drive-map-area #risk-card .integrated-navigation {
+  padding: 10px !important;
+  background: #ffffff !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance {
+  grid-template-columns: 27px minmax(0, 1fr) !important;
+  gap: 8px !important;
+  padding: 8px !important;
+  border: 1px solid #b8d8eb !important;
+  border-left: 4px solid #1178c9 !important;
+  border-radius: 8px !important;
+  background: #f3f9fd !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance > i {
+  width: 27px !important;
+  height: 27px !important;
+  background: #1178c9 !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  box-shadow: 0 3px 7px rgba(17, 120, 201, 0.24) !important;
+}
+
+#drive-map-area #risk-card #next-distance {
+  display: inline-flex !important;
+  width: fit-content !important;
+  padding: 2px 5px !important;
+  border-radius: 4px !important;
+  background: #dceefa !important;
+  color: #0b67a9 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+}
+
+#drive-map-area #risk-card #field-guide-title {
+  margin-top: 4px !important;
+  color: #102f42 !important;
+  font-size: 14px !important;
+  font-weight: 950 !important;
+  line-height: 1.32 !important;
+}
+
+#drive-map-area #risk-card #field-guide-detail {
+  margin-top: 3px !important;
+  color: #506d7b !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta {
+  margin-top: 8px !important;
+  padding: 7px 8px !important;
+  border: 1px solid #d1e3ec !important;
+  border-radius: 7px !important;
+  background: #eef6fa !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta span {
+  color: #405f6e !important;
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta b {
+  color: #0a6eb4 !important;
+  font-size: 13.5px !important;
+  font-weight: 950 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta em {
+  padding: 3px 5px !important;
+  background: #d8ebf6 !important;
+  color: #21698f !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+}
+
+#drive-map-area #risk-card .route-reason {
+  padding: 8px 10px !important;
+  border-top: 1px solid #dce8ee !important;
+  background: #fffaf2 !important;
+}
+
+#drive-map-area #risk-card .route-reason-label {
+  color: #9b5e13 !important;
+  font-size: 9.5px !important;
+  font-weight: 950 !important;
+}
+
+#drive-map-area #risk-card .route-reason strong {
+  margin-top: 3px !important;
+  color: #6e4515 !important;
+  font-size: 12px !important;
+  font-weight: 950 !important;
+}
+
+#drive-map-area #risk-card > #play-event.demo-action,
+#drive-map-area #risk-card.collapsed > #play-event.demo-action,
+#drive-map-area #risk-card.triggered > #play-event.demo-action,
+#drive-map-area #risk-card.complete > #play-event.demo-action {
+  min-height: 39px !important;
+  height: 39px !important;
+  margin-bottom: 10px !important;
+  background: #0d6fb5 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 950 !important;
+  line-height: 39px !important;
+  box-shadow: 0 5px 12px rgba(13, 111, 181, 0.25) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert {
+  border-color: #d9434d !important;
+  box-shadow: 0 12px 28px rgba(170, 38, 47, 0.26), 0 0 0 3px rgba(255, 255, 255, 0.8) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head {
+  background: linear-gradient(135deg, #d9434d 0%, #b82f39 100%) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head b::after {
+  content: "우회 감지" !important;
+  color: #b82f39 !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .integrated-guidance {
+  border-color: #efc7ca !important;
+  border-left-color: #d9434d !important;
+  background: #fff6f6 !important;
+}
+
+#drive-map-area #risk-card.complete {
+  border-color: #15956d !important;
+  box-shadow: 0 12px 28px rgba(20, 116, 86, 0.23), 0 0 0 3px rgba(255, 255, 255, 0.8) !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head {
+  background: linear-gradient(135deg, #15956d 0%, #0c7655 100%) !important;
+}
+
+/* Calm colour system: blue for navigation, semantic colours for status only. */
+#drive-map-area #risk-card,
+#drive-map-area #risk-card.triggered.alert,
+#drive-map-area #risk-card.complete {
+  border-color: #a9c7d6 !important;
+  border-top-color: #1178c9 !important;
+  box-shadow: 0 10px 24px rgba(18, 58, 76, 0.17), 0 0 0 2px rgba(255, 255, 255, 0.92) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head,
+#drive-map-area #risk-card.triggered.alert .risk-card-head,
+#drive-map-area #risk-card.complete .risk-card-head {
+  background: linear-gradient(135deg, #1178c9 0%, #075f9d 100%) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head i {
+  color: #fff !important;
+  background: #d9434d !important;
+  border-color: rgba(255, 255, 255, 0.86) !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head i {
+  color: #fff !important;
+  background: #15956d !important;
+  border-color: rgba(255, 255, 255, 0.86) !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance,
+#drive-map-area #risk-card.triggered.alert .integrated-guidance,
+#drive-map-area #risk-card.complete .integrated-guidance {
+  background: #fff !important;
+  border-color: #d7e3e9 !important;
+  border-left-color: #1178c9 !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .integrated-guidance {
+  border-left-color: #d9434d !important;
+}
+
+#drive-map-area #risk-card.complete .integrated-guidance {
+  border-left-color: #15956d !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta {
+  background: #f3f7f9 !important;
+  border-color: #d4e0e6 !important;
+}
+
+#drive-map-area #risk-card .route-reason,
+#drive-map-area #risk-card.triggered.alert .route-reason,
+#drive-map-area #risk-card.complete .route-reason {
+  color: #294553 !important;
+  background: #f8fafb !important;
+  border-color: #d8e2e7 !important;
+}
+
+#drive-map-area #risk-card .route-reason-label {
+  color: #607782 !important;
+}
+
+#drive-map-area #risk-card .route-reason strong {
+  color: #294553 !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .route-reason {
+  border-left: 3px solid #d9434d !important;
+}
+
+#drive-map-area #risk-card.complete .route-reason {
+  border-left: 3px solid #15956d !important;
+}
+
+/* Only the control explicitly marked as a demo uses orange. */
+#drive-map-area #risk-card.collapsed > #play-event.demo-action:not(:disabled) {
+  color: var(--product-demo-deep) !important;
+  background: var(--product-demo-soft) !important;
+  border-color: #e4b276 !important;
+  box-shadow: none !important;
+}
+
+#drive-map-area #risk-card.collapsed > #play-event.demo-action:not(:disabled):hover {
+  background: #ffe9cf !important;
+}
+
+#drive-map-area #risk-card.collapsed > #play-event.demo-action::after {
+  display: inline-flex !important;
+  color: var(--product-demo-deep) !important;
+  background: #ffe1b9 !important;
+  border-color: #e4b276 !important;
+}
+
+#drive-map-area #risk-card > #play-event.demo-action:disabled {
+  color: #627680 !important;
+  background: #e9eff2 !important;
+  border-color: #d4dfe4 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head b::after {
+  content: "안내 완료" !important;
+  color: #0c7655 !important;
+}
+
+/* Kakao-navigation-inspired hierarchy: one dark header, white content, one blue accent. */
+#drive-map-area #risk-card,
+#drive-map-area #risk-card.triggered.alert,
+#drive-map-area #risk-card.complete {
+  background: #ffffff !important;
+  border: 1px solid #d7dee2 !important;
+  border-top: 0 !important;
+  box-shadow: 0 8px 22px rgba(22, 36, 44, 0.18) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head,
+#drive-map-area #risk-card.triggered.alert .risk-card-head,
+#drive-map-area #risk-card.complete .risk-card-head {
+  background: #263640 !important;
+  border-bottom: 0 !important;
+}
+
+#drive-map-area #risk-card .risk-card-head i,
+#drive-map-area #risk-card.triggered.alert .risk-card-head i,
+#drive-map-area #risk-card.complete .risk-card-head i {
+  color: #ffffff !important;
+  background: #0b91d3 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#drive-map-area #risk-card .risk-card-head small {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+#drive-map-area #risk-card .risk-card-head b::after {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+#drive-map-area #risk-card.triggered.alert .risk-card-head b::after {
+  color: #b8323a !important;
+  background: #fff0f1 !important;
+  border-color: #ffdadd !important;
+}
+
+#drive-map-area #risk-card.complete .risk-card-head b::after {
+  color: #0f7e5b !important;
+  background: #e9f7f1 !important;
+  border-color: #caeadf !important;
+}
+
+#drive-map-area #risk-card .integrated-navigation {
+  background: #ffffff !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance,
+#drive-map-area #risk-card.triggered.alert .integrated-guidance,
+#drive-map-area #risk-card.complete .integrated-guidance {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-bottom: 1px solid #edf1f3 !important;
+  border-radius: 0 !important;
+}
+
+#drive-map-area #risk-card .integrated-guidance > i,
+#drive-map-area #risk-card.triggered.alert .integrated-guidance > i,
+#drive-map-area #risk-card.complete .integrated-guidance > i {
+  color: #ffffff !important;
+  background: #0b91d3 !important;
+  box-shadow: none !important;
+}
+
+#drive-map-area #risk-card #next-distance {
+  color: #0879b4 !important;
+  background: #e8f4fa !important;
+}
+
+#drive-map-area #risk-card #field-guide-title {
+  color: #172b35 !important;
+}
+
+#drive-map-area #risk-card #field-guide-detail {
+  color: #697b84 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta {
+  background: #f3f6f7 !important;
+  border: 0 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta span {
+  color: #596c75 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta b {
+  color: #0879b4 !important;
+}
+
+#drive-map-area #risk-card .integrated-route-meta em {
+  color: #53666f !important;
+  background: #e5ebee !important;
+}
+
+#drive-map-area #risk-card .route-reason,
+#drive-map-area #risk-card.triggered.alert .route-reason,
+#drive-map-area #risk-card.complete .route-reason {
+  color: #52646d !important;
+  background: #ffffff !important;
+  border: 0 !important;
+  border-top: 1px solid #edf1f3 !important;
+}
+
+#drive-map-area #risk-card .route-reason-label,
+#drive-map-area #risk-card.triggered.alert .route-reason-label,
+#drive-map-area #risk-card.complete .route-reason-label {
+  color: #73838b !important;
+}
+
+#drive-map-area #risk-card .route-reason strong,
+#drive-map-area #risk-card.triggered.alert .route-reason strong,
+#drive-map-area #risk-card.complete .route-reason strong {
+  color: #344952 !important;
+}
+
+#drive-map-area #risk-card > #play-event.demo-action:disabled {
+  color: #6b7b82 !important;
+  background: #edf1f2 !important;
+  border-color: #dde4e7 !important;
+}
+
+/* Keep the mobile canvas stable while browser chrome changes during reload. */
+@media (max-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .workbench,
+  .phone-shell {
+    height: var(--app-viewport-height, 100dvh) !important;
+    min-height: 0 !important;
+  }
+
+  .screens {
+    height: calc(var(--app-viewport-height, 100dvh) - 32px) !important;
+  }
+}

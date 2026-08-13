@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+.streamlit/secrets.toml
+*.key
+*.pem
+*.db
+*.sqlite
+*.sqlite3
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+TEST.pptx
+qa-index-response.html
+desktop-prototype.html
+
+# Local presentation-generation utilities and generated decks
+build_briefing_ppt.py
+build_submission_report.py
+repair_edited_submission_report.py
+recapture_ppt_screens.py
+*.pptx
+
+# Local tunnel helpers and obsolete working notes
+public-tunnel.*
+run_public_server.py
+CODING.md
+STITCH_PROMPT.md
+FINAL_SUBMISSION_GUIDE.md
+js/ppt-capture-helper.js
