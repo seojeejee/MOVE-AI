@@ -499,7 +499,6 @@
     }).format(new Date()).replace(/\. /g, ".").replace(/\.$/, "");
     $("#approved-title").textContent = payload.title;
     $("#approved-description").textContent = payload.description;
-    $("#approved-condition").textContent = "적용: 같은 게이트·차량 조건 · 30일 후 재검토";
     $("#approved-tags").replaceChildren(...payload.tags.map((tag) => {
       const item = document.createElement("span");
       item.textContent = tag;
@@ -515,7 +514,7 @@
         document.createTextNode(briefingTitle.slice(splitIndex + 3))
       );
     } else seniorTitle.textContent = briefingTitle;
-    $("#senior-call-context").textContent = "검증된 현장지식을 바탕으로 AI가 경로를 자동 추천합니다.";
+    $("#senior-call-context").textContent = "축적된 현장지식을 바탕으로 지금 필요한 경로를 안내합니다.";
   }
 
   function applyKnowledgeLibraryFilter() {
@@ -524,14 +523,6 @@
     const activeButton = $(".knowledge-category-row button.active", library);
     const category = activeButton?.dataset.categoryFilter || "all";
     const query = ($("#knowledge-search")?.value || "").trim().toLocaleLowerCase("ko-KR");
-    const categoryNames = {
-      all: "전체 현장지식",
-      weather: "날씨 지식",
-      gate: "게이트 지식",
-      unloading: "하역 지식",
-      safety: "안전 지식",
-      route: "경로 지식"
-    };
     let visibleCount = 0;
     $$(".library-asset-card", library).forEach((card) => {
       const matchesCategory = category === "all" || card.dataset.knowledgeCategory === category;
@@ -540,7 +531,7 @@
       card.classList.toggle("category-hidden", !matches);
       if (matches && !card.classList.contains("hidden")) visibleCount += 1;
     });
-    $("#knowledge-shelf-title").textContent = categoryNames[category] || "현장지식";
+    $("#knowledge-shelf-title").textContent = "암묵지 디지털 자산";
     $("#knowledge-result-count").textContent = `${visibleCount}개`;
   }
 
@@ -561,9 +552,6 @@
       item.textContent = tag;
       return item;
     }));
-    $("#candidate-condition").textContent = approved
-      ? "적용: 같은 게이트·차량 조건 · 30일 후 재검토"
-      : "GPS 위치·기록 시각·첨부 근거를 포함해 검증 대기 중입니다.";
     const card = $("#candidate-card");
     const candidateCategory = state.reportScenario === "near-miss"
       ? { key: "safety", label: "안전" }

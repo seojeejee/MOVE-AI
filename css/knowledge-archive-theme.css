@@ -1,0 +1,33 @@
+/* Final knowledge archive palette: mint and deep teal, matching the service. */
+#screen-library .knowledge-library-hero {
+  border: 1px solid #b9ddd3 !important;
+  border-top: 4px solid #45bea2 !important;
+  border-left: 1px solid #b9ddd3 !important;
+  background: linear-gradient(145deg, #edf9f5 0%, #ffffff 72%) !important;
+  box-shadow: 0 8px 20px rgba(28, 100, 83, 0.11) !important;
+}
+
+#screen-library .knowledge-library-hero > small {
+  color: #16816c !important;
+  font-weight: 900 !important;
+}
+
+#screen-library .knowledge-library-hero h3 {
+  color: #173b46 !important;
+}
+
+#screen-library .knowledge-library-hero p {
+  color: #587276 !important;
+}
+
+#screen-library .knowledge-library-hero > div {
+  border-top-color: #d6ebe5 !important;
+}
+
+#screen-library .knowledge-library-hero > div span {
+  color: #66807f !important;
+}
+
+#screen-library .knowledge-library-hero > div b {
+  color: #187a67 !important;
+}

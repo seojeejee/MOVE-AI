@@ -8,8 +8,8 @@
   --semantic-judgement-soft:#fcf2e5;
   --semantic-safety:#b84f4b;
   --semantic-safety-soft:#fbeceb;
-  --semantic-ai:#6d56a1;
-  --semantic-ai-soft:#f0edfa;
+  --semantic-ai:#8a5a2b;
+  --semantic-ai-soft:#f7efe6;
 }
 
 /* Blue — 운행·GPS·배차 */
@@ -25,7 +25,7 @@
 .tacit-field{border-color:#e1bc7f;background:var(--semantic-judgement-soft)}.tacit-field:before{background:#f6dfbd;color:var(--semantic-judgement)}.tacit-field>small{color:#805a28}.tacit-field textarea{border-color:#dfc28e!important}.knowledge-card-mobile.candidate{border-color:#e2c18c;border-left-color:var(--semantic-judgement);background:#fffaf3}.knowledge-card-mobile.candidate em{background:#f9e7c9;color:#98601b}.knowledge-card-mobile.candidate small{color:#7c642e}.manager-review-card{border-color:#dfbd7d;border-top-color:var(--semantic-judgement)}.manager-review-top span{background:#f8e8cc;color:#93601d}.manager-review-top em{color:#8f672b}.live-chip{background:#fff1da;color:#95611d}
 
 /* Purple — AI converts raw records into structured knowledge fields. */
-.secondary-button{border-color:#b5a8d7;background:#fbfaff;color:var(--semantic-ai)}.secondary-button:before{color:var(--semantic-ai)}.report-draft{border-color:#c9bfE5;border-top-color:var(--semantic-ai);background:#fbfaff}.report-draft>span{background:var(--semantic-ai-soft);color:var(--semantic-ai)}.report-summary-fields{border-color:#d9d1ed}.report-summary-fields>div{border-bottom-color:#e9e4f5}.report-summary-fields dt{color:var(--semantic-ai)}.report-summary-fields dd{color:#4f4a63}
+.secondary-button{border-color:#c9ad91;background:#fffaf5;color:var(--semantic-ai)}.secondary-button:before{color:var(--semantic-ai)}.report-draft{border-color:#d8c2aa;border-top-color:var(--semantic-ai);background:#fffaf5}.report-draft>span{background:var(--semantic-ai-soft);color:var(--semantic-ai)}.report-summary-fields{border-color:#e2d1bf}.report-summary-fields>div{border-bottom-color:#efe4d8}.report-summary-fields dt{color:var(--semantic-ai)}.report-summary-fields dd{color:#5e4938}
 
 /* Red — safety incident / near-miss is visible immediately when selected. */
 .report-types button[data-report-type="current"]{color:var(--semantic-route)!important}.report-types button[data-report-type="knowledge"]{color:var(--semantic-judgement)!important}.report-types button[data-report-type="near-miss"]{color:var(--semantic-safety)!important}.report-types button[data-report-type="current"].active{background:var(--semantic-route-soft)!important;box-shadow:inset 0 0 0 1px #a8cede}.report-types button[data-report-type="knowledge"].active{background:var(--semantic-judgement-soft)!important;box-shadow:inset 0 0 0 1px #e1bd83}.report-types button[data-report-type="near-miss"].active{background:var(--semantic-safety-soft)!important;box-shadow:inset 0 0 0 1px #dfaaa7}.report-body .field-label:not(.tacit-field){padding:12px;border:1px solid #bdd7e2;border-left:4px solid var(--semantic-route);border-radius:9px;background:#f7fbfd}.report-body .field-label:not(.tacit-field) textarea{border-color:#bfd7e1}.emergency-note{color:var(--semantic-safety)!important}.attach-buttons button.recording{border-color:var(--semantic-safety);background:var(--semantic-safety-soft);color:var(--semantic-safety)}

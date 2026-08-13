@@ -7,6 +7,7 @@
 - 팀명: 루트위스퍼
 - 참여기업 그룹: 카카오모빌리티
 - 팀원: 서지혜, 이규연, 박범수
+- 소스코드: https://github.com/route-whisper/MOVE-AI
 - 배포 데모: https://ummpizza.streamlit.app/
 
 ## 한 문장 소개
@@ -27,6 +28,14 @@ AI 현장지식 서비스입니다.
 Streamlit Community Cloud에서 엔트리 파일로 `streamlit_app.py`를
 선택합니다. 배포본은 서버 없이도 핵심 흐름을 시연할 수 있는
 `gilsaegim-standalone.html`을 실행합니다.
+
+UI 수정 후 배포용 독립 HTML을 갱신합니다.
+
+```powershell
+node build_streamlit_bundle.js
+```
+
+자세한 배포 순서는 `DEPLOY_STREAMLIT.md`에 정리되어 있습니다.
 
 ## 가장 빠른 실행
 
