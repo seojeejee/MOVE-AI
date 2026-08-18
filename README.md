@@ -8,7 +8,7 @@
 - 참여기업 그룹: 카카오모빌리티
 - 팀원: 서지혜, 이규연, 박범수
 - 소스코드: https://github.com/route-whisper/MOVE-AI
-- 배포 데모: https://ummpizza.streamlit.app/
+- 배포 데모: https://route-whisper.streamlit.app/
 
 ## 한 문장 소개
 
@@ -37,16 +37,6 @@ node build_streamlit_bundle.js
 
 자세한 배포 순서는 `DEPLOY_STREAMLIT.md`에 정리되어 있습니다.
 
-## 가장 빠른 실행
-
-`RUN_DEMO.cmd`를 더블클릭합니다. 또는 PowerShell에서 프로젝트 폴더로 이동한 뒤 실행합니다.
-
-```powershell
-python server.py
-```
-
-브라우저에서 `http://127.0.0.1:8001`을 엽니다. 오른쪽 발표 콘솔의 **전체 시연 자동 재생**을 누르면 대표 흐름이 자동으로 진행됩니다.
-
 ## 대표 시연 흐름
 
 1. 현장관리자 또는 운송자 역할을 선택합니다.
@@ -62,8 +52,6 @@ python server.py
 
 ## 포함된 Smart Risk Pipeline
 
-바탕화면의 `smart_risk_pipeline_for_friend` 전체를 `smart_risk_pipeline/`에 복사해 포함했습니다.
-
 - `GET /api/health`
 - `POST /api/gps`
 - `POST /api/demo/risk`
@@ -73,21 +61,3 @@ python server.py
 - `GET /api/facilities/status`
 - `GET /api/facilities/events`
 - `GET /api/risk-zones`
-
-## 데모 경계
-
-- 42초와 ETA 등의 수치는 시연용 합성 데이터입니다.
-- AI는 사고·안전을 확정하지 않고 관리자 확인용 초안을 만듭니다.
-- 길새김은 기존 내비게이션을 대체하거나 자동 우회하지 않습니다.
-- 지도는 외부 CDN 없이 SVG로 동작합니다.
-- Python 서버가 없어도 핵심 UI는 브라우저 폴백으로 시연됩니다.
-
-## 사진·음성 제보 데모
-
-오른쪽 발표 콘솔에서 제보 데모를 누르면 샘플 사진과 8초 음성 메모가 자동으로 표시됩니다. 사진 선택은 실제 파일 미리보기를, 음성 녹음은 브라우저 MediaRecorder를 사용합니다. 마이크가 거부되거나 지원되지 않으면 시연용 음성으로 안전하게 전환됩니다.
-
-
-## 시연용 현장 관찰 이미지
-
-시연 사진은 A게이트의 적색 도크 신호, 대기 차량, B게이트 방향 수신호를 함께 보여 주는 AI 생성 이미지입니다. 실제 사고나 파손을 주장하지 않으며, 운송자가 현장에서 포착하는 암묵지 신호를 설명하기 위한 가상 시나리오입니다. 상세 표기는 PHOTO_CREDITS.md에 기록했습니다.
-
