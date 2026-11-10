@@ -4,7 +4,11 @@
 
 > MOVE AI 해커톤 팀 프로젝트입니다. 이 포크는 원 저장소의 이력과 공동 작업을 보존하며, `seojeejee`의 구현 기여와 기술적 의사결정을 포트폴리오 관점에서 설명합니다.
 
-![길새김 서비스 화면](assets/gilsaegim-launch-v1.png)
+[프로필](https://github.com/seojeejee) · [나의 기여](#나의-기여) · [시연 흐름](#대표-시연-흐름) · [실행 방법](#실행) · [원 팀 저장소](https://github.com/route-whisper/MOVE-AI)
+
+**현재 단계:** GPS·제보·관리자 검증 흐름을 연결한 팀 프로토타입입니다. AI 구조화는 결정론적 시연 함수이며 실제 LLM·TMS 연동과 현장 효과 측정은 후속 과제입니다.
+
+<a href="assets/gilsaegim-launch-v1.png"><img src="assets/gilsaegim-launch-v1.png" width="640" alt="길새김 현장지식 서비스 프로토타입 화면" /></a>
 
 ## 문제와 접근
 
@@ -36,6 +40,15 @@ Git 이력에서 `seojeejee@users.noreply.github.com`으로 확인되는 구현 
 - 데모 스크립트와 배포 문서 작성
 
 원본 프로젝트와 전체 공동 작업 이력은 [route-whisper/MOVE-AI](https://github.com/route-whisper/MOVE-AI)에서 확인할 수 있습니다.
+
+## 설계와 구현 근거
+
+| 현장 문제 | 설계·구현 | 확인할 자료 |
+| --- | --- | --- |
+| 위치 변화만으로 운전자의 의도를 알 수 없음 | 반경·지오펜스·속도 정보를 확인 후보로 처리 | [위험 판정 엔진](smart_risk_pipeline/src/risk_pipeline.py) |
+| 시설 진입과 대기·이탈의 맥락이 필요함 | 시설 이벤트와 위치 이력 저장 | [시설 이벤트](smart_risk_pipeline/src/facility_engine.py), [저장 계층](smart_risk_pipeline/src/storage.py) |
+| 검증되지 않은 제보가 다음 운행에 전달될 수 있음 | 관리자 승인 전후 상태와 재사용 흐름 구분 | [구현 설계](IMPLEMENTATION.md) |
+| 기능을 연결한 사용자 흐름을 보여줘야 함 | 역할 선택부터 제보·검증·재사용까지 시연 순서 문서화 | [데모 스크립트](DEMO_SCRIPT.md) |
 
 ## 실제 구현 범위
 
